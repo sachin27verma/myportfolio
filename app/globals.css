@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap'); */
+
+.font-unifraktur {
+  font-family: 'UnifrakturCook', cursive;
+  /* You can add more styles if needed */
+}
+
+.digital-font
+{
+  font-family: 'Pixelify Sans', sans-serif;
+}
+
+.custom-drop-shadow {
+  filter: drop-shadow(0 0 10px #FFD700); /* Change #ffffff to your desired shadow color */
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
