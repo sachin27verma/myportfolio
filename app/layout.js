@@ -12,6 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      {/* <a  href="https://icons8.com/icon/62452/firebase">Firebase</a> icon by <a href="https://icons8.com">Icons8</a> */}
       <body className={inter.className}>{children}</body>
     </html>
   )
