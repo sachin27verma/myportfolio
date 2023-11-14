@@ -1,5 +1,7 @@
+"use client";
+import React, { useState, useRef, useEffect } from "react";
+// import Particles from "particles.js"
 import Image from "next/image";
-import React from "react";
 import "../styles/fonts.css";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -8,16 +10,46 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Header from "./Header";
 import Link from "next/link";
+import NET from "vanta/dist/vanta.rings.min";
+import * as THREE from "three";
+// import particlesConfig from "../particlesConfig";
 
 export default function Herosection() {
+  const [vantaEffect, setVantaEffect] = useState(0);
+
+  const vantaRef = useRef(null);
+
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+        NET({
+          THREE,
+          el: vantaRef.current,
+          mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: 200.00,
+  minWidth: 200.00,
+  scale: 1.00,
+  scaleMobile: 1.00,
+  color: "#ffd700",
+  backgroundColor: "#1d0039",
+  maxDistance: 16.00
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
   return (
     <>
-      <div className=" relative">
-        <Image
+      <div ref={vantaRef} className=" relative">
+        {/* <Image
           src={"/bg-3.jpg"}
           fill
           className=" object-fit md:object-fit  transform -rotate-y-180 "
-        />
+        /> */}
         <Header />
         <div className="relative  ">
           <div className=" h-[500px] md:min-h-screen flex justify-between flex-wrap    relative">
@@ -35,11 +67,11 @@ export default function Herosection() {
                     />{" "}
                   </div>
 
-                  <p className=" text-4xl font-bold mb-2 digital-font">
+                  <p className=" text-4xl font-bold mb-2 ">
                     {" "}
                     I am sachin verma
                   </p>
-                  <p className=" text-xl font-medium digital-font mb-2">
+                  <p className=" text-xl font-medium  mb-2">
                     A Full Stack Developer
                   </p>
                   <p className=" flex justify-center md:justify-start gap-3  ">

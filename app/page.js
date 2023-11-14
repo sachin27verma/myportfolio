@@ -1,5 +1,4 @@
 import Image from 'next/image'
-
 import Herosection from './Herosection';
 import Project from './Project';
 import About from './About';
