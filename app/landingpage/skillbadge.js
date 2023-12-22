@@ -511,7 +511,7 @@ const technologies = [
   { id: 9, name: canva, level: 35 },
   { id: 10, name: nextjs, level: 45 },
   { id: 11, name: firebase, level: 47 },
-  // { id: 12, name: Html, level: 80 },
+ 
   { id: 13, name: nodejs, level: 55 },
   { id: 14, name: vscode, level: 65 },
   { id: 15, name: github, level: 30 },

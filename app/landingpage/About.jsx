@@ -27,7 +27,7 @@ export default function About() {
             </p>
           </div>
           <div className=" relative h-[300px] w-full md:w-[50%]">
-            <Image src={"/p5.jpg"} fill className=" object-contain object-bottom  contrast-125 brightness-90 saturate-125" />
+            <Image src={"/p5.jpg"} fill className=" object-contain object-bottom  contrast-125 brightness-90 saturate-125" alt='/' />
           </div>
         </motion.div>
       </div>

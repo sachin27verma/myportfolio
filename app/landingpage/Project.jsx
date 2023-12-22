@@ -7,10 +7,8 @@ import { motion, useScroll } from "framer-motion";
 import Link from "next/link";
 import FastForwardIcon from "@mui/icons-material/FastForward";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
-// import { db } from "@/firebase/Firebase";
-import {db} from '../../firebase/Firebase'
+import { db } from "../../firebase/Firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
-import { ToastContainer, toast } from 'react-toastify';
 
 export default function Project() {
   const [item, setItem] = useState([]);

@@ -36,7 +36,6 @@ export default function Herosection() {
           color: "#ffd700",
           backgroundColor: "#1d0039",
           maxDistance: 16.0,
-          
         })
       );
     }
@@ -47,14 +46,14 @@ export default function Herosection() {
 
   return (
     <>
-      <div  className=" relative" ref={vantaRef}>
+      <div className=" relative" ref={vantaRef}>
         {/* <Image
           src={"/bg-3.jpg"}
           fill
           className=" object-fit md:object-fit  transform -rotate-y-180 "
         /> */}
         <Header />
-        <div className="relative  " >
+        <div className="relative  ">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -155,6 +154,7 @@ export default function Herosection() {
                       height="125"
                       href="/p04.png"
                       className="filter overflow-hidden custom-drop-shadow"
+                      alt='/'
                     />
                   </g>
                 </svg>

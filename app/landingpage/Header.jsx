@@ -1,6 +1,4 @@
-// Ensure you need 'useClient' before importing
-// import { useClient } from 'react-server-dom-webpack';
-'use client'
+"use client";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
@@ -8,35 +6,26 @@ import ListIcon from "@mui/icons-material/List";
 import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import "../../styles/fonts.css";
 import Link from "next/link";
-import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
-
+import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 const Header = () => {
-  // useClient(); // Uncomment if needed
-
-  
-
   const [menu, setMenu] = useState(false);
-  // const [originalState, setOriginalState] = useState(false);
 
   const handleMenuToggle = () => {
-   setMenu((prevState)=>!prevState);
+    setMenu((prevState) => !prevState);
   };
 
-  
-  const [hover1,ishoverd1]=useState(false);
-  const [hover2,ishoverd2]=useState(false);
-  const [hover3,ishoverd3]=useState(false);
-  const [hover4,ishoverd4]=useState(false);
-  
+  const [hover1, ishoverd1] = useState(false);
+  const [hover2, ishoverd2] = useState(false);
+  const [hover3, ishoverd3] = useState(false);
+
   return (
     <>
       {!menu ? (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="text-[#FFD700] w-full relative z-10 "
-        >
+          className="text-[#FFD700] w-full relative z-10 ">
           <div className="flex justify-between items-center align-middle py-2 relative w-full  px-3">
             <div className="flex md:bg-purple-950 shadow-lg p-2 w-2/5 md:w-[12%] rounded-lg">
               <div className="w-auto hidden md:flex items-center">
@@ -53,10 +42,9 @@ const Header = () => {
                 whileTap={{
                   scale: 0.8,
                   rotate: -90,
-                  borderRadius: "100%"
+                  borderRadius: "100%",
                 }}
-                className="ml-2 text-center  logo text-[#FFD700]"
-              >
+                className="ml-2 text-center  logo text-[#FFD700]">
                 <p className="font-unifraktur text-3xl tracking-wider">
                   triflate
                 </p>
@@ -64,23 +52,54 @@ const Header = () => {
               </motion.div>
             </div>
             <div className="hidden md:flex justify-around items-center w-[40%]">
-              
-              <Link href="/uploadproject"  className=" font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300"  ><DriveFolderUploadIcon className=" text-4xl"/>
-              <hr className={`  transition-transform h-1  bg-[#FFD700] rounded-xl`}></hr></Link>
-              
-          
-              <div className="text-md  font-semibold cursor-pointer"  onMouseEnter={()=>ishoverd1(!hover1)} onMouseLeave={()=>ishoverd1(!hover1)}>Projects
-              <hr className={` ${hover1 ? 'scale-x-100':'scale-x-0'} transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr></div>
-              <div className="text-md  font-semibold cursor-pointer"  onMouseEnter={()=>ishoverd2(!hover2)} onMouseLeave={()=>ishoverd2(!hover2)}>About Me
-              <hr className={` ${hover2 ? 'scale-x-100':'scale-x-0'} transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr></div>
-              <div className="text-md  font-semibold cursor-pointer"  onMouseEnter={()=>ishoverd3(!hover3)} onMouseLeave={()=>ishoverd3(!hover3)}>Message Me
-              <hr className={` ${hover3 ? 'scale-x-100':'scale-x-0'} transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr></div>
-              
+              <Link
+                href="/uploadproject"
+                className=" font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300">
+                <DriveFolderUploadIcon className=" text-4xl" />
+                <hr
+                  className={`  transition-transform h-1  bg-[#FFD700] rounded-xl`}></hr>
+              </Link>
+
+              <div
+                className="text-md  font-semibold cursor-pointer"
+                onMouseEnter={() => ishoverd1(!hover1)}
+                onMouseLeave={() => ishoverd1(!hover1)}>
+                Projects
+                <hr
+                  className={` ${
+                    hover1 ? "scale-x-100" : "scale-x-0"
+                  } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
+              </div>
+              <div
+                className="text-md  font-semibold cursor-pointer"
+                onMouseEnter={() => ishoverd2(!hover2)}
+                onMouseLeave={() => ishoverd2(!hover2)}>
+                About Me
+                <hr
+                  className={` ${
+                    hover2 ? "scale-x-100" : "scale-x-0"
+                  } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
+              </div>
+              <div
+                className="text-md  font-semibold cursor-pointer"
+                onMouseEnter={() => ishoverd3(!hover3)}
+                onMouseLeave={() => ishoverd3(!hover3)}>
+                Message Me
+                <hr
+                  className={` ${
+                    hover3 ? "scale-x-100" : "scale-x-0"
+                  } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
+              </div>
+
               <div className="p-2 border-2 border-gray-100 bg-gray-100  rounded-md shadow-md hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105">
                 <Link href="https://drive.google.com/file/d/1I8XwYmZdTHRG_8RUR8CnRZHLHbxYFjlB/view?usp=drive_link">
-  <p className="text-lg font-bold text-[#1d0039]" target="blank">Resume</p></Link>
-</div>
-
+                  <p
+                    className="text-lg font-bold text-[#1d0039]"
+                    target="blank">
+                    Resume
+                  </p>
+                </Link>
+              </div>
             </div>
             <div className="flex md:hidden w-[15%] relative ">
               <p>
@@ -93,7 +112,9 @@ const Header = () => {
           </div>
         </motion.div>
       ) : (
-        <div className="flex absolute z-3 justify-around text-[#1d0039] bg-slate-300  w-full h-full" style={{ zIndex:'5'}}>
+        <div
+          className="flex absolute z-3 justify-around text-[#1d0039] bg-slate-300  w-full h-full"
+          style={{ zIndex: "5" }}>
           <div className="h-full py-4">
             <ul className="list-disc  flex flex-col gap-4">
               <li className="text-md font-semibold">Projects</li>
@@ -108,7 +129,6 @@ const Header = () => {
               onClick={handleMenuToggle}
             />
           </div>
-         
         </div>
       )}
     </>
