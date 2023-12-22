@@ -500,20 +500,21 @@ export const github = (
 );
 
 const technologies = [
-  Cpp,
-  javascript,
-  tailwind,
-  Html,
-  Mongodb,
-  express,
-  react,
-  figma,
-  canva,
-  nextjs,
-  firebase,
-  Html,
-  nodejs,
-  vscode,
-  github,
+  { id: 1, name: Cpp, level: 50 },
+  { id: 2, name: javascript, level: 55 },
+  { id: 3, name: tailwind, level: 75 },
+  { id: 4, name: Html, level: 80 },
+  { id: 5, name: Mongodb, level: 40 },
+  { id: 6, name: express, level: 35 },
+  { id: 7, name: react, level: 50 },
+  { id: 8, name: figma, level: 40 },
+  { id: 9, name: canva, level: 35 },
+  { id: 10, name: nextjs, level: 45 },
+  { id: 11, name: firebase, level: 47 },
+  // { id: 12, name: Html, level: 80 },
+  { id: 13, name: nodejs, level: 55 },
+  { id: 14, name: vscode, level: 65 },
+  { id: 15, name: github, level: 30 },
 ];
+
 export default technologies;
