@@ -13,7 +13,7 @@ const Header = () => {
   const scrolltoHash = function (element_id) {
     const element = document.getElementById(element_id)
     element?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-    handleMenuToggle();
+    
   }
 
   const [menu, setMenu] = useState(false);
@@ -126,7 +126,7 @@ const Header = () => {
             <ul className="list-disc  flex flex-col gap-4">
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('project')}>Projects</li>
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('aboutme')}>About Me</li>
-              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact')}>Message Me</li>
+              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact') }>Message Me</li>
             </ul>
           </div>
           <p className="font-unifraktur text-3xl tracking-wider">triflate</p>
