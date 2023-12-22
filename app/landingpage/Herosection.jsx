@@ -46,19 +46,20 @@ export default function Herosection() {
 
   return (
     <>
+    <Header />
       <div className=" relative" ref={vantaRef}>
         {/* <Image
           src={"/bg-3.jpg"}
           fill
           className=" object-fit md:object-fit  transform -rotate-y-180 "
         /> */}
-        <Header />
+        
         <div className="relative  ">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className=" h-[450px] md:min-h-screen flex justify-between flex-wrap items-center  relative">
-            <div className=" w-full  md:w-[50%] ">
+            className=" h-[450px] md:min-h-screen pb-4 mb-4 flex justify-between flex-wrap items-center  relative">
+            <div className=" w-full   md:w-[50%] ">
               {" "}
               <div className=" flex justify-center items-center flex-col h-full">
                 <div className=" text-center md:text-left ">
@@ -80,9 +81,9 @@ export default function Herosection() {
                     {" "}
                     I am sachin verma
                   </motion.p>
-                  <p className=" text-lg first-letter:text-2xl last:first-letter:text-3xl text-center font-medium   mb-2">
+                  <p className=" text-lg first-letter:text-2xl last:first-letter:text-3xl text-center font-medium tracking-wide    mb-2">
                     <q className=" ">
-                  Tech-savvy creator merging innovation and art.<br></br> Redefining possibilities with passion.</q><br></br>
+                    Coding ninja, vanquishing bugs and embracing snacks,<br></br>one byte at a time.</q><br></br>
                   </p>
                   <p className=" flex justify-center pt-2  gap-3  ">
                     <Link href="https://www.instagram.com/triflate_/">

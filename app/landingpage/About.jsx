@@ -8,7 +8,7 @@ export default function About() {
   const ref=useRef(null);
   const {scrollYProgress}= useScroll({
     target:ref,
-    offset:["0 1","1.33 1"],
+    offset:["0 1","0 1"],
   })
   return (
     <>
@@ -16,7 +16,9 @@ export default function About() {
         <div className=" digital-font text-3xl text-center text-[#FFD700]">
           About Me
         </div>
-        <motion.div ref={ref} style={{scale:scrollYProgress,opacity:scrollYProgress}} className=" flex flex-col-reverse md:flex-row w-4/5 mx-auto my-2 ">
+        <motion.div ref={ref}
+         style={{scale:scrollYProgress,opacity:scrollYProgress}}
+          className=" flex flex-col-reverse md:flex-row w-4/5 mx-auto my-2 ">
           <div className=" w-full md:w-[50%] flex justify-center items-center">
             <p className="  tracking-wider  text-md break-all leading-9 first-letter:text-6xl first-letter:inline-block first-letter:float-left first-letter:mr-15 ">
             👋 Hello there! I'm <strong className=" text-[#FFD700]">Sachin Verma</strong>, a passionate third-year Computer

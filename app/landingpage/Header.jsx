@@ -13,6 +13,7 @@ const Header = () => {
   const scrolltoHash = function (element_id) {
     const element = document.getElementById(element_id)
     element?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    handleMenuToggle();
   }
 
   const [menu, setMenu] = useState(false);
@@ -119,7 +120,7 @@ const Header = () => {
         </motion.div>
       ) : (
         <div
-          className="flex absolute z-3 justify-around text-[#1d0039] bg-slate-300  w-full h-full"
+          className="flex absolute z-3 justify-around text-[#1d0039] bg-slate-300  w-full h-[400px]"
           style={{ zIndex: "5" }}>
           <div className="h-full py-4">
             <ul className="list-disc  flex flex-col gap-4">
