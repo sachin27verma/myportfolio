@@ -30,7 +30,7 @@ export default function Contactme() {
 
   return (
     <>
-      <div className=" bg-[#1d0039] py-4 ">
+      <div id='contact' className=" bg-[#1d0039] py-4 ">
         <div className="digital-font text-3xl text-center text-[#FFD700]">
           Message Me
         </div>

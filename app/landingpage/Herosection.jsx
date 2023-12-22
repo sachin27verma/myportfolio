@@ -76,14 +76,15 @@ export default function Herosection() {
                   <motion.p
                     initial={{ fontSize: "0px", color: "#00000" }}
                     animate={{ fontSize: "40px", color: "#ff2994" }}
-                    className=" text-4xl font-bold mb-2 ">
+                    className=" text-4xl  text-center font-bold mb-2 ">
                     {" "}
                     I am sachin verma
                   </motion.p>
-                  <p className=" text-xl font-medium  mb-2">
-                    A Full Stack Developer
+                  <p className=" text-lg first-letter:text-2xl last:first-letter:text-3xl text-center font-medium   mb-2">
+                    <q className=" ">
+                  Tech-savvy creator merging innovation and art.<br></br> Redefining possibilities with passion.</q><br></br>
                   </p>
-                  <p className=" flex justify-center md:justify-start gap-3  ">
+                  <p className=" flex justify-center pt-2  gap-3  ">
                     <Link href="https://www.instagram.com/triflate_/">
                       <InstagramIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />{" "}
                     </Link>{" "}

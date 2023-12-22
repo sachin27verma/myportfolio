@@ -54,7 +54,7 @@ export default function Project() {
 
   return (
     <>
-      <div className="bg-[#1d0039]">
+      <div id='project' className="bg-[#1d0039]">
         <div className="text-center text-3xl text-[#FFD700] py-2 pt-5 mb-3 font-bold digital-font">
           PROJECT
         </div>

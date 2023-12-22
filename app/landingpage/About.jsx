@@ -12,7 +12,7 @@ export default function About() {
   })
   return (
     <>
-      <div className=" bg-[#1d0039] py-4 ">
+      <div id='aboutme' className=" bg-[#1d0039] py-4 ">
         <div className=" digital-font text-3xl text-center text-[#FFD700]">
           About Me
         </div>

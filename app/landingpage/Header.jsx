@@ -9,6 +9,12 @@ import Link from "next/link";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
 
 const Header = () => {
+
+  const scrolltoHash = function (element_id) {
+    const element = document.getElementById(element_id)
+    element?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+  }
+
   const [menu, setMenu] = useState(false);
 
   const handleMenuToggle = () => {
@@ -60,7 +66,7 @@ const Header = () => {
                   className={`  transition-transform h-1  bg-[#FFD700] rounded-xl`}></hr>
               </Link>
 
-              <div
+              <div onClick={() => scrolltoHash('project')}
                 className="text-md  font-semibold cursor-pointer"
                 onMouseEnter={() => ishoverd1(!hover1)}
                 onMouseLeave={() => ishoverd1(!hover1)}>
@@ -70,7 +76,7 @@ const Header = () => {
                     hover1 ? "scale-x-100" : "scale-x-0"
                   } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
               </div>
-              <div
+              <div onClick={() => scrolltoHash('aboutme')}
                 className="text-md  font-semibold cursor-pointer"
                 onMouseEnter={() => ishoverd2(!hover2)}
                 onMouseLeave={() => ishoverd2(!hover2)}>
@@ -80,7 +86,7 @@ const Header = () => {
                     hover2 ? "scale-x-100" : "scale-x-0"
                   } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
               </div>
-              <div
+              <div onClick={() => scrolltoHash('contact')}
                 className="text-md  font-semibold cursor-pointer"
                 onMouseEnter={() => ishoverd3(!hover3)}
                 onMouseLeave={() => ishoverd3(!hover3)}>
@@ -117,9 +123,9 @@ const Header = () => {
           style={{ zIndex: "5" }}>
           <div className="h-full py-4">
             <ul className="list-disc  flex flex-col gap-4">
-              <li className="text-md font-semibold">Projects</li>
-              <li className="text-md font-semibold">About Me</li>
-              <li className="text-md font-semibold">Message Me</li>
+              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('project')}>Projects</li>
+              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('aboutme')}>About Me</li>
+              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact')}>Message Me</li>
             </ul>
           </div>
           <p className="font-unifraktur text-3xl tracking-wider">triflate</p>
