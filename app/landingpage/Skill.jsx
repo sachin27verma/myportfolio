@@ -11,7 +11,7 @@ export default function Skill() {
         <div className=" digital-font text-3xl text-center text-[#FFD700]">
           Tools & Skills
         </div>
-        <div className="w-full md:w-[50%] mx-auto flex  justify-center items-center flex-wrap gap-6 my-3">
+        <div className="w-full md:w-[50%] mx-auto flex  justify-center items-center flex-wrap gap-0 md:gap-6 my-3">
           {technologies.map((el) => (
             <SkillCard key={el.id} badge={el.name} level={`${el.level}%`} />
           ))}

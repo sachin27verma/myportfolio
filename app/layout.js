@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {/* <a  href="https://icons8.com/icon/62452/firebase">Firebase</a> icon by <a href="https://icons8.com">Icons8</a> */}
-      <body className={inter.className}> <main className='bg-[#1d0039]'>{children}</main></body>
+      <body className={inter.className}> <main className='bg-[#1d0039] '>{children}</main></body>
     </html>
   )
 }

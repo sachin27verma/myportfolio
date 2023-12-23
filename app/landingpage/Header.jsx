@@ -91,7 +91,7 @@ const Header = () => {
                 className="text-md  font-semibold cursor-pointer"
                 onMouseEnter={() => ishoverd3(!hover3)}
                 onMouseLeave={() => ishoverd3(!hover3)}>
-                Message Me
+                Contact Me
                 <hr
                   className={` ${
                     hover3 ? "scale-x-100" : "scale-x-0"
@@ -126,7 +126,7 @@ const Header = () => {
             <ul className="list-disc  flex flex-col gap-4">
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('project')}>Projects</li>
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('aboutme')}>About Me</li>
-              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact') }>Message Me</li>
+              <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact') }>Contact Me</li>
             </ul>
           </div>
           <p className="font-unifraktur text-3xl tracking-wider">triflate</p>
