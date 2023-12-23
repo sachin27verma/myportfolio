@@ -10,36 +10,71 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 export default function Contactme() {
+  const [Email, setEmail] = useState(true);
+  const handlechange = async (Email) => {
+    // e.preventDefault()
+    // setEmail(e.target.value)
+    // console.log(Email)
+    console.log(Email);
+
+    const encodedParams = new URLSearchParams();
+    encodedParams.set("email", Email);
+
+    const options = {
+      method: "POST",
+      url: "https://email-validator8.p.rapidapi.com/api/v2.0/email",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        "X-RapidAPI-Key": "3c4c43bfbfmshe34ec537381d872p103a25jsn882ced5f44ce",
+        "X-RapidAPI-Host": "email-validator8.p.rapidapi.com",
+      },
+      data: encodedParams,
+    };
+
+    try {
+      const response = await axios.request(options);
+      // console.log(response)
+      console.log("response",( response).data.valid);
+      setEmail(response?.data?.valid);
+    } catch (error) {
+      console.error("error", error);
+      return null;
+    }
+  };
+
   const [form, setform] = useState({ name: "", email: "", description: "" });
   const notify = (message, type) => toast(message, { type });
 
   const handlesubmit = async (e) => {
     e.preventDefault();
+    // console.log(form.email);
+    // await handlechange(form.email);
 
     try {
       if (form.description !== "" && form.name !== "" && form.email !== "") {
-        // const validthing=true;
-        // if(form.email===validthing)
-        // {
-
-        // }
-        await addDoc(collection(db, "Message from visited user"), {
-          name: form.name,
-          email: form.email,
-          description: form.description,
-        });
+        // console.log(Email)
+        if (Email) {
+          await addDoc(collection(db, "Message from visited user"), {
+            name: form.name,
+            email: form.email,
+            description: form.description,
+          });
+          notify(" 👌 Your message has been sent successfully!", "success");
+        } else {
+          notify("Plzz... Provide a valid Email ", "error");
+        }
 
         setform({ name: "", email: "", description: "" });
-        notify(" 👌 Your message has been sent successfully!","success");
       } else {
-        notify("😒 Plzz , Fill all the fields","error");
+        notify("😒 Plzz... Fill all the fields", "error");
       }
     } catch (error) {
       console.error(" Error adding document: ", error);
-      notify("An error occurred. Please try again later.","error");
+      notify("An error occurred. Please try again later.", "error");
     }
   };
 
@@ -49,14 +84,14 @@ export default function Contactme() {
         <div className="digital-font text-3xl text-center text-[#FFD700]">
           contact me
         </div>
-        <div className=" my-4 mt-1 w-6/6 md:w-3/6  mx-2 md:mx-auto  relative">
+        <div className=" my-4 mt-1 w-6/6 md:w-2/6  mx-2 md:mx-auto  relative">
           {/* <Image src={"/bg-2.jpg"} fill className=" blur-sm " /> */}
           <p className=" text-center tracking-widest leading-9">
             {" "}
             Unlocking Success Together<br></br>Let's Connect for Exciting
             Collaborations!
           </p>
-          <p className=" flex justify-center md:justify-between pt-2  gap-6 ">
+          <p className=" flex justify-center  pt-2  gap-6 ">
             <Link href="https://www.instagram.com/triflate_/">
               <InstagramIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />{" "}
             </Link>{" "}
@@ -108,12 +143,10 @@ export default function Contactme() {
               </label>
               <input
                 type="email"
-                pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*"
+                // pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
                 className=" bg-gray-200 h-[50px] rounded-lg  pl-4"
                 placeholder=" Email..."
-                onChange={(e) => {
-                  setform({ ...form, email: e.target.value });
-                }}
+                onChange={(e) => setform({ ...form, email: e.target.value })}
                 value={form.email}
                 required></input>
               <label className=" text-[#FFD700] pl-2 font-medium">
@@ -124,18 +157,17 @@ export default function Contactme() {
                 rows="4"
                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500"
                 placeholder="Leave a comment..."
-                onChange={(e) =>
-                  setform({ ...form, description: e.target.value })
-                }
+                onChange={(e) => {
+                  setform({ ...form, description: e.target.value });
+                }}
                 value={form.description}></textarea>
-            <button
-              onClick={handlesubmit}
-              className=" inline-block my-4 text-center p-3 rounded-lg float-right  font-bold py-1  text-lg text-purple-900 hover:scale-110  shadow-lg  bg-gradient-to-r from-[#ece9ef] via-purple-400 to-purple-600">
-              Submit
-            </button>
-            <ToastContainer />
+              <button
+                onClick={handlesubmit}
+                className=" inline-block my-4 text-center p-3 rounded-lg float-right  font-bold py-1  text-lg text-purple-900 hover:scale-110  shadow-lg  bg-gradient-to-r from-[#ece9ef] via-purple-400 to-purple-600">
+                Submit
+              </button>
+              <ToastContainer />
             </form>
-            
           </div>
         </div>
       </div>
