@@ -127,6 +127,13 @@ const Header = () => {
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('project')}>Projects</li>
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('aboutme')}>About Me</li>
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact') }>Contact Me</li>
+              <Link
+                href="/uploadproject"
+                className=" font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300">
+                <DriveFolderUploadIcon className=" text-4xl" />
+                <hr
+                  className={`  transition-transform h-1  bg-[#FFD700] rounded-xl`}></hr>
+              </Link>
             </ul>
           </div>
           <p className="font-unifraktur text-3xl tracking-wider">triflate</p>

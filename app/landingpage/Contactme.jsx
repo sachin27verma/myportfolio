@@ -14,157 +14,117 @@ import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 export default function Contactme() {
-  const [Email, setEmail] = useState(true);
-  const handlechange = async (Email) => {
-    // e.preventDefault()
-    // setEmail(e.target.value)
-    // console.log(Email)
-    console.log(Email);
+  const [form, setForm] = useState({ name: "", email: "", description: "" });
 
-    const encodedParams = new URLSearchParams();
-    encodedParams.set("email", Email);
-
-    const options = {
-      method: "POST",
-      url: "https://email-validator8.p.rapidapi.com/api/v2.0/email",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": "3c4c43bfbfmshe34ec537381d872p103a25jsn882ced5f44ce",
-        "X-RapidAPI-Host": "email-validator8.p.rapidapi.com",
-      },
-      data: encodedParams,
-    };
-
-    try {
-      const response = await axios.request(options);
-      // console.log(response)
-      console.log("response",( response).data.valid);
-      setEmail(response?.data?.valid);
-    } catch (error) {
-      console.error("error", error);
-      return null;
-    }
-  };
-
-  const [form, setform] = useState({ name: "", email: "", description: "" });
   const notify = (message, type) => toast(message, { type });
 
-  const handlesubmit = async (e) => {
+  const isValidEmail = (email) => {
+    const pattern = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return pattern.test(email);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(form.email);
-    // await handlechange(form.email);
 
     try {
       if (form.description !== "" && form.name !== "" && form.email !== "") {
-        // console.log(Email)
-        if (Email) {
+        if (isValidEmail(form.email)) {
           await addDoc(collection(db, "Message from visited user"), {
             name: form.name,
             email: form.email,
             description: form.description,
           });
-          notify(" 👌 Your message has been sent successfully!", "success");
+          notify("🎉 Your message has been sent successfully!", "success");
+          setForm({ name: "", email: "", description: "" });
         } else {
-          notify("Plzz... Provide a valid Email ", "error");
+          setForm({...form,email:''})
+          notify(" 😕 Dear , Please provide a valid Email", "error");
         }
-
-        setform({ name: "", email: "", description: "" });
       } else {
-        notify("😒 Plzz... Fill all the fields", "error");
+        notify("😒 Please fill all the fields", "error");
       }
     } catch (error) {
-      console.error(" Error adding document: ", error);
+      console.error("Error adding document: ", error);
       notify("An error occurred. Please try again later.", "error");
     }
   };
 
   return (
     <>
-      <div id="contact" className=" bg-[#1d0039] py-4 ">
-        <div className="digital-font text-3xl text-center text-[#FFD700]">
-          contact me
+      <div id="contact" className="bg-[#3a1a59] rounded-lg mx-2  w-6/6 md:w-2/6 md:mx-auto p-3 shadow-2xl  py-4 ">
+        <div className="digital-font text-3xl text-center  text-[#FFD700]">
+          Contact me
         </div>
-        <div className=" my-4 mt-1 w-6/6 md:w-2/6  mx-2 md:mx-auto  relative">
-          {/* <Image src={"/bg-2.jpg"} fill className=" blur-sm " /> */}
-          <p className=" text-center tracking-widest leading-9">
-            {" "}
-            Unlocking Success Together<br></br>Let's Connect for Exciting
-            Collaborations!
+        <div className="my-4 mt-1   mx-2 md:mx-auto relative">
+          <p className="text-center tracking-widest leading-9">
+            Unlocking Success Together<br></br>Let's Connect for Exciting Collaborations!
           </p>
-          <p className=" flex justify-center  pt-2  gap-6 ">
-            <Link href="https://www.instagram.com/triflate_/">
-              <InstagramIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />{" "}
-            </Link>{" "}
+          <p className="flex justify-center pt-2 gap-6">
+            <Link href="https://www.instagram.com/triflate/">
+              <InstagramIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
+            </Link>
             <Link href="https://github.com/sachin27verma">
-              {" "}
               <GitHubIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
-            </Link>{" "}
+            </Link>
             <Link href="https://www.linkedin.com/in/sachin-kumar-79125122a/">
               <LinkedInIcon className="text-white hover:text-[#FFD700] hover:animate-bounce" />
-            </Link>{" "}
+            </Link>
             <Link href="https://twitter.com/triflate_">
               <TwitterIcon className="text-white hover:text-[#FFD700] hover:animate-bounce" />
             </Link>
             <Link href="www">
-              <WhatsAppIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />{" "}
+              <WhatsAppIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
             </Link>
           </p>
 
-          <div className=" flex justify-between items-center mt-4">
-            <hr className=" inline-block w-[45%] float-left"></hr>
-            <p className=" text-center inline-block">OR</p>
-            <hr className=" inline-block w-[45%] float-right"></hr>
+          <div className="flex justify-between items-center mt-4">
+            <hr className="inline-block w-[45%] float-left"></hr>
+            <p className="text-center inline-block">OR</p>
+            <hr className="inline-block w-[45%] float-right"></hr>
           </div>
 
-          <div className="   mx-auto pt-4">
-            {/* <label
-              for="message"
-              class="block mb-2 text-xl font-semibold text-[#FFD700]">
-              Your message
-            </label>
-            <textarea
-              id="message"
-              rows="4"
-              class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500"
-              placeholder="Leave a comment..." onChange={(e)=> setform({...form,message:e.target.value})} value={form.message}></textarea> */}
-            <form className=" flex flex-col gap-2  text-black">
-              <label className=" text-[#FFD700] pl-2 font-medium">
-                Name<sup className=" text-red-600"> *</sup>
+          <div className="mx-auto pt-4">
+            <form className="flex flex-col gap-2 text-black">
+              <label className="text-[#FFD700] pl-2 font-medium">
+                Name<sup className="text-red-600"> *</sup>
               </label>
               <input
                 type="text"
-                className=" bg-gray-200 h-[50px] rounded-lg  pl-4"
+                className="bg-gray-200 h-[50px] rounded-lg pl-4"
                 required
-                placeholder=" Enter Your Name..."
-                onChange={(e) => setform({ ...form, name: e.target.value })}
-                value={form.name}></input>
+                placeholder="Enter Your Name..."
+                onChange={(e) => setForm({ ...form, name: e.target.value })}
+                value={form.name}
+              ></input>
               <label className="text-[#FFD700] pl-2 font-medium">
-                Email<sup className=" text-red-600"> *</sup>
+                Email<sup className="text-red-600"> *</sup>
               </label>
               <input
                 type="email"
-                // pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                className=" bg-gray-200 h-[50px] rounded-lg  pl-4"
-                placeholder=" Email..."
-                onChange={(e) => setform({ ...form, email: e.target.value })}
+                pattern={isValidEmail.pattern}
+                required
+                className="bg-gray-200 h-[50px] rounded-lg pl-4"
+                placeholder="Email..."
+                onChange={(e) => setForm({ ...form, email: e.target.value })}
                 value={form.email}
-                required></input>
-              <label className=" text-[#FFD700] pl-2 font-medium">
-                Description<sup className=" text-red-600"> *</sup>
+              ></input>
+              <label className="text-[#FFD700] pl-2 font-medium">
+                Description<sup className="text-red-600"> *</sup>
               </label>
               <textarea
                 id="message"
                 rows="4"
-                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500"
+                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500"
                 placeholder="Leave a comment..."
-                onChange={(e) => {
-                  setform({ ...form, description: e.target.value });
-                }}
-                value={form.description}></textarea>
+                onChange={(e) => setForm({ ...form, description: e.target.value })}
+                value={form.description}
+              ></textarea>
               <button
-                onClick={handlesubmit}
-                className=" inline-block my-4 text-center p-3 rounded-lg float-right  font-bold py-1  text-lg text-purple-900 hover:scale-110  shadow-lg  bg-gradient-to-r from-[#ece9ef] via-purple-400 to-purple-600">
-                Submit
+                onClick={handleSubmit}
+                className="trivia inline-block my-4 text-center p-3 rounded-lg float-right font-bold py-1 text-2xl text-blue-600 hover:scale-110 shadow-lg bg-gradient-to-r from-[#ece9ef] via-purple-400 to-purple-600"
+              >
+                <p className="">
+                Submit</p>
               </button>
               <ToastContainer />
             </form>
