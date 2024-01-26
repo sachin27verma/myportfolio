@@ -35,6 +35,7 @@ export default function Contactme() {
             name: form.name,
             email: form.email,
             description: form.description,
+            timstamp:new Date()
           });
           notify("🎉 Your message has been sent successfully!", "success");
           setForm({ name: "", email: "", description: "" });
