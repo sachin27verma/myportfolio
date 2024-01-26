@@ -7,6 +7,7 @@ import CancelPresentationIcon from "@mui/icons-material/CancelPresentation";
 import "../../styles/fonts.css";
 import Link from "next/link";
 import DriveFolderUploadIcon from "@mui/icons-material/DriveFolderUpload";
+import Themetoggle from '../../components/Themetoggle'
 
 const Header = () => {
 
@@ -25,14 +26,28 @@ const Header = () => {
   const [hover1, ishoverd1] = useState(false);
   const [hover2, ishoverd2] = useState(false);
   const [hover3, ishoverd3] = useState(false);
+  const variants = {
+    open: {
+      width: '16rem',
+      transition: {
+        damping: 40,
+        ease: [0.17, 0.67, 0.83, 0.67]
+      },
+    },
+    closed: {
+      width: '16rem',
+      transition: {
+        damping: 40,
+      },
+    },
+  }
 
   return (
     <>
       {!menu ? (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-[#FFD700] w-full relative z-10 ">
+          
+          className="text-gray-400 dark:text-[#FFD700] w-full relative z-10 ">
           <div className="flex justify-between items-center align-middle py-2 relative w-full  px-3">
             <div className="flex md:bg-purple-950 shadow-lg p-2 w-2/5 md:w-[12%] rounded-lg">
               <div className="w-auto hidden md:flex items-center">
@@ -61,10 +76,10 @@ const Header = () => {
             <div className="hidden md:flex justify-around items-center w-[40%]">
               <Link
                 href="/uploadproject"
-                className=" font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300">
+                className=" font-semibold cursor-pointer hover:scale-105 dark:hover:text-yellow-300 hover:text-gray-500">
                 <DriveFolderUploadIcon className=" text-4xl" />
                 <hr
-                  className={`  transition-transform h-1  bg-[#FFD700] rounded-xl`}></hr>
+                  className={`  transition-transform h-1  dark:bg-[#FFD700] bg-gray-400 rounded-xl`}></hr>
               </Link>
 
               <div onClick={() => scrolltoHash('project')}
@@ -75,7 +90,7 @@ const Header = () => {
                 <hr
                   className={` ${
                     hover1 ? "scale-x-100" : "scale-x-0"
-                  } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
+                  } transition-transform h-1 dark:bg-[#FFD700] bg-gray-400  rounded-xl`}></hr>
               </div>
               <div onClick={() => scrolltoHash('aboutme')}
                 className="text-md  font-semibold cursor-pointer"
@@ -85,7 +100,7 @@ const Header = () => {
                 <hr
                   className={` ${
                     hover2 ? "scale-x-100" : "scale-x-0"
-                  } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
+                  } transition-transform h-1 dark:bg-[#FFD700] bg-gray-400 rounded-xl`}></hr>
               </div>
               <div onClick={() => scrolltoHash('contact')}
                 className="text-md  font-semibold cursor-pointer"
@@ -95,8 +110,9 @@ const Header = () => {
                 <hr
                   className={` ${
                     hover3 ? "scale-x-100" : "scale-x-0"
-                  } transition-transform h-1 bg-[#FFD700] rounded-xl`}></hr>
+                  } transition-transform h-1 dark:bg-[#FFD700] bg-gray-400 rounded-xl`}></hr>
               </div>
+              <div><Themetoggle/></div>
 
               <div className="p-2 border-2 border-gray-100 bg-gray-100  rounded-md shadow-md hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105">
                 <Link href="https://drive.google.com/file/d/1I8XwYmZdTHRG_8RUR8CnRZHLHbxYFjlB/view?usp=drive_link">
@@ -119,31 +135,37 @@ const Header = () => {
           </div>
         </motion.div>
       ) : (
-        <div
-          className="flex absolute z-3 justify-around text-[#1d0039] bg-slate-300  w-full h-[400px]"
+        <motion.div 
+        animate={'closed'}
+        variants={variants}
+
+        // className=" bg-white text-gray shadow-xl z-[999] max-w-[16rem]
+        // w-[16rem] overflow-hidden md:relative fixed h-screen"
+          className="flex absolute  z-3 justify-around dark:text-[#FFD770] text-gray-400 bg-gray-700  w-full h-[400px]"
           style={{ zIndex: "5" }}>
           <div className="h-full py-4">
             <ul className="list-disc  flex flex-col gap-4">
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('project')}>Projects</li>
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('aboutme')}>About Me</li>
               <li className="text-md font-semibold cursor-pointer hover:scale-105" onClick={() => scrolltoHash('contact') }>Contact Me</li>
+              <li><Themetoggle/></li>
               <Link
                 href="/uploadproject"
                 className=" font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300">
                 <DriveFolderUploadIcon className=" text-4xl" />
                 <hr
-                  className={`  transition-transform h-1  bg-[#FFD700] rounded-xl`}></hr>
+                  className={`  transition-transform h-1  dark:bg-[#FFD700] bg-gray-700 rounded-xl`}></hr>
               </Link>
             </ul>
           </div>
-          <p className="font-unifraktur text-3xl tracking-wider">triflate</p>
+          {/* <p className="font-unifraktur text-3xl tracking-wider">triflate</p> */}
           <div className=" py-4 text-4xl">
             <CancelPresentationIcon
               className={`font-bold cursor-pointer hover:scale-105 hover:brightness-110 `}
               onClick={handleMenuToggle}
             />
           </div>
-        </div>
+        </motion.div>
       )}
     </>
   );

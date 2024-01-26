@@ -1,27 +1,30 @@
-"use client";
-import React, { useState, useRef, useEffect } from "react";
-// import Particles from "particles.js"
-import Image from "next/image";
-import "../../styles/fonts.css";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import TwitterIcon from "@mui/icons-material/Twitter";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import Header from "./Header";
-import Link from "next/link";
-import NET from "vanta/dist/vanta.rings.min";
-import * as THREE from "three";
-import { motion, AnimatePresence } from "framer-motion";
-// import particlesConfig from "../particlesConfig";
+// ... (previous imports and code)
+'use client';
+import React, { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
+import '../../styles/fonts.css';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Header from './Header';
+import Link from 'next/link';
+import NET from 'vanta/dist/vanta.rings.min';
+import * as THREE from 'three';
+import { motion } from 'framer-motion';
+import Togglevalue from '../../components/Togglevalue'
+import Section from '../../components/Section/Section'
 
 export default function Herosection() {
-  const [vantaEffect, setVantaEffect] = useState(0);
-
+  const [vantaEffect, setVantaEffect] = useState(null);
+  const [no,setno]=useState(0)
   const vantaRef = useRef(null);
+ 
+
 
   useEffect(() => {
-    if (!vantaEffect) {
+    const setupVantaEffect = () => {
       setVantaEffect(
         NET({
           THREE,
@@ -33,83 +36,88 @@ export default function Herosection() {
           minWidth: 200.0,
           scale: 1.0,
           scaleMobile: 1.0,
-          color: "#ffd700",
-          backgroundColor: "#1d0039",
+          color: '#ffd700',
+          // backgroundColor:  '#1d0039',
+        //  backgroundColor:'transparent',
+        backgroundAlpha: 0,
           maxDistance: 16.0,
         })
       );
+    };
+
+    if (!vantaEffect) {
+      setupVantaEffect();
     }
+    console.log("click")
+
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };
   }, [vantaEffect]);
 
   return (
+
     <>
-    <Header />
-      <div className=" relative" ref={vantaRef}>
-        {/* <Image
-          src={"/bg-3.jpg"}
-          fill
-          className=" object-fit md:object-fit  transform -rotate-y-180 "
-        /> */}
-        
-        <div className="relative  ">
+      <Header />
+      <div className='relative bg-gray-900 dark:bg-[#1d0039] '  ref={vantaRef} >
+        <Section className="relative">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className=" h-[450px] md:min-h-screen pb-4 mb-4 flex justify-between flex-wrap items-center  relative">
-            <div className=" w-full   md:w-[50%] ">
-              {" "}
-              <div className=" flex justify-center items-center flex-col h-full">
-                <div className=" text-center md:text-left ">
-                  <div className=" relative flex justify-center">
-                    {" "}
+            className="h-[450px] md:min-h-screen pb-4 mb-4 flex justify-between flex-wrap items-center relative"
+          >
+            <div className="w-full md:w-[50%]">
+              <div className="flex justify-center items-center flex-col h-full">
+                <div className="text-center md:text-left">
+                  <div className="relative flex justify-center">
                     <Image
-                      src={"/Namaste.png"}
+                      src={'/Namaste.png'}
                       height={250}
                       width={250}
-                      className=" brightness-105"
+                      className="brightness-105"
                       alt="image"
-                    />{" "}
+                    />
                   </div>
 
                   <motion.p
-                    initial={{ fontSize: "0px", color: "#00000" }}
-                    animate={{ fontSize: "40px", color: "#ff2994" }}
-                    className=" text-4xl  text-center font-bold mb-2 ">
-                    {" "}
+                    initial={{ fontSize: '0px', color: '#00000' }}
+                    animate={{ fontSize: '40px', color: '#ff2994' }}
+                    className="text-4xl text-center font-bold mb-2"
+                  >
                     I am sachin verma
                   </motion.p>
-                  <p className=" text-lg first-letter:text-2xl last:first-letter:text-3xl text-center font-medium tracking-wide    mb-2">
-                    <q className=" ">
-                    Coding ninja, vanquishing bugs and embracing snacks,<br></br>one byte at a time.</q><br></br>
+                  <p className="text-lg text-gray-400 dark:text-[#FFD700] first-letter:text-2xl last:first-letter:text-3xl text-center font-medium tracking-wide mb-2">
+                    <q>
+                      Coding ninja, vanquishing bugs and embracing snacks,
+                      <br />
+                      one byte at a time.
+                    </q>
+                    <br />
                   </p>
-                  <p className=" flex justify-center pt-2  gap-3  ">
+                  <p className="flex text-gray-400 dark:text-[#FFD700] justify-center pt-2 gap-3">
                     <Link href="https://www.instagram.com/triflate_/">
-                      <InstagramIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />{" "}
-                    </Link>{" "}
+                      <InstagramIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />{' '}
+                    </Link>{' '}
                     <Link href="https://github.com/sachin27verma">
-                      {" "}
-                      <GitHubIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
-                    </Link>{" "}
+                      {' '}
+                      <GitHubIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />
+                    </Link>{' '}
                     <Link href="https://www.linkedin.com/in/sachin-kumar-79125122a/">
-                      <LinkedInIcon className="text-white hover:text-[#FFD700] hover:animate-bounce" />
-                    </Link>{" "}
+                      <LinkedInIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />
+                    </Link>{' '}
                     <Link href="https://twitter.com/triflate_">
-                      <TwitterIcon className="text-white hover:text-[#FFD700] hover:animate-bounce" />
+                      <TwitterIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />
                     </Link>
                     <Link href="www">
-                      <WhatsAppIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />{" "}
+                      <WhatsAppIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce " />{' '}
                     </Link>
                   </p>
                 </div>
               </div>
             </div>
-            <div className=" hidden  justify-center items-center md:block w-0 md:w-1/2 overflow-hidden">
-              <div className=" w-full">
-                {/* <!--?xml version="1.0" standalone="no"?-->   */}
-                <svg
+            <div className="hidden justify-center items-center md:block w-0 md:w-1/2 overflow-hidden">
+              <div className="w-full">
+              <svg
                   id="sw-js-blob-svg"
                   viewBox="0 0 100 100"
                   xmlns="http://www.w3.org/2000/svg">
@@ -163,7 +171,7 @@ export default function Herosection() {
               </div>
             </div>
           </motion.div>
-        </div>
+        </Section>
       </div>
     </>
   );

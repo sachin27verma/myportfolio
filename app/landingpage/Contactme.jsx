@@ -12,6 +12,8 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import Section from '../../components/Section/Section'
+
 
 export default function Contactme() {
   const [form, setForm] = useState({ name: "", email: "", description: "" });
@@ -50,9 +52,9 @@ export default function Contactme() {
   };
 
   return (
-    <>
-      <div id="contact" className="bg-[#3a1a59] rounded-lg mx-2  w-6/6 md:w-2/6 md:mx-auto p-3 shadow-2xl  py-4 ">
-        <div className="digital-font text-3xl text-center  text-[#FFD700]">
+    <Section>
+      <div id="contact" className="dark:bg-[#3a1a59] bg-gray-700 text-gray-200 shadow-2xl rounded-lg mx-2  w-6/6 md:w-2/6 md:mx-auto p-3 drop-shadow-2xl  py-4 ">
+        <div className="digital-font text-3xl text-center">
           Contact me
         </div>
         <div className="my-4 mt-1   mx-2 md:mx-auto relative">
@@ -61,19 +63,19 @@ export default function Contactme() {
           </p>
           <p className="flex justify-center pt-2 gap-6">
             <Link href="https://www.instagram.com/triflate/">
-              <InstagramIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
+              <InstagramIcon className="text-white hover:text-gray-400 hover:dark:text-[#FFD770] hover:animate-bounce " />
             </Link>
             <Link href="https://github.com/sachin27verma">
-              <GitHubIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
+              <GitHubIcon className="text-white hover:text-gray-400 hover:dark:text-[#FFD770] hover:animate-bounce " />
             </Link>
             <Link href="https://www.linkedin.com/in/sachin-kumar-79125122a/">
-              <LinkedInIcon className="text-white hover:text-[#FFD700] hover:animate-bounce" />
+              <LinkedInIcon className="text-white hover:text-gray-400 hover:dark:text-[#FFD770] hover:animate-bounce" />
             </Link>
             <Link href="https://twitter.com/triflate_">
-              <TwitterIcon className="text-white hover:text-[#FFD700] hover:animate-bounce" />
+              <TwitterIcon className="text-white hover:text-gray-400 hover:dark:text-[#FFD770] hover:animate-bounce" />
             </Link>
             <Link href="www">
-              <WhatsAppIcon className="text-white hover:text-[#FFD700] hover:animate-bounce " />
+              <WhatsAppIcon className="text-white hover:text-gray-400 hover:dark:text-[#FFD770] hover:animate-bounce " />
             </Link>
           </p>
 
@@ -83,9 +85,9 @@ export default function Contactme() {
             <hr className="inline-block w-[45%] float-right"></hr>
           </div>
 
-          <div className="mx-auto pt-4">
-            <form className="flex flex-col gap-2 text-black">
-              <label className="text-[#FFD700] pl-2 font-medium">
+          <div className="mx-auto dark:text-[#FFD700]  text-gray-400 pt-4">
+            <form className="flex flex-col gap-2 ">
+              <label className=" pl-2 font-medium">
                 Name<sup className="text-red-600"> *</sup>
               </label>
               <input
@@ -96,7 +98,7 @@ export default function Contactme() {
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 value={form.name}
               ></input>
-              <label className="text-[#FFD700] pl-2 font-medium">
+              <label className=" pl-2 font-medium">
                 Email<sup className="text-red-600"> *</sup>
               </label>
               <input
@@ -108,7 +110,7 @@ export default function Contactme() {
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 value={form.email}
               ></input>
-              <label className="text-[#FFD700] pl-2 font-medium">
+              <label className=" pl-2 font-medium">
                 Description<sup className="text-red-600"> *</sup>
               </label>
               <textarea
@@ -131,6 +133,6 @@ export default function Contactme() {
           </div>
         </div>
       </div>
-    </>
+    </Section>
   );
 }

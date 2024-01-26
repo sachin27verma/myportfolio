@@ -9,10 +9,31 @@ import FastForwardIcon from "@mui/icons-material/FastForward";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { db } from "../../firebase/Firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
+import Section from '../../components/Section/Section'
+
 
 export default function Project() {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  
+
+  const variants = {
+    show: {
+      opacity: 1,
+      x: 0,
+      // X:0,
+      transition: {
+        ease: "easeIn",
+        duration: 0.7
+      }
+    },
+    hide: {
+      x: -150,
+      // x:-20,
+      opacity: 0
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,27 +75,26 @@ export default function Project() {
 
   return (
     <>
-      <div id='project' className="bg-[#1d0039]">
-        <div className="text-center text-3xl text-[#FFD700] py-2 pt-5 mb-3 font-bold digital-font">
+      <div id='project' className=" fancy-border  h-auto md:h-screen   ">
+        <div className="text-center text-3xl text-gray-400 dark:text-[#FFD700] py-2 pb-0 mb-3 font-bold digital-font">
           PROJECT
         </div>
-        <div className="w-full mx-auto flex flex-col fancy-border justify-center gap-3 relative">
+        <div className="w-full mx-auto  gap-3 relative">
           {loading || item.length === 0 ? (
             <h1 className="flex justify-center items-center">Loading....</h1>
           ) : (
+            <Section>
             <motion.div
               key={item[state].id}
-              ref={ref}
-              style={{
-                scale: scrollYProgress,
-                opacity: scrollYProgress,
-              }}
+              variants={variants} animate="show" initial="hide"
               className="w-full md:min-w-[300px]">
-              <p className="text-3xl font-bold  text-[#FFD700] tracking-wider mb-3 text-center drop-shadow-lg outline-offset-2 outline-blue-50">
-                {item[state].name}
-              </p>
-              <div className="w-full md:w-5/6 mx-auto h-auto md:h-screen rounded-lg relative flex flex-col md:flex-row gap-2">
-                <div className="h-[400px] md:h-full w-full md:w-1/2  relative group">
+              <p className="text-3xl font-bold  text-gray-400 dark:text-[#FFD700] tracking-wider mb-5 text-center drop-shadow-lg outline-offset-2 outline-blue-50">
+                <span className="  ">{item[state].name}</span>
+                
+              </p> 
+              <div className=" flex flex-row ">
+              <div className="w-full md:w-5/6 mx-auto h-auto rounded-lg relative flex flex-col md:flex-row gap-4">
+                <div className="h-[400px] md:h-[70vh] w-full md:w-1/2  relative group">
                   <Image
                     key={item[state].id}
                     src={item[state].image1}
@@ -91,11 +111,11 @@ export default function Project() {
                   />
                 </div>
 
-                <div className="w-full h-full md:w-1/2 flex flex-col justify-between">
+                <div className="w-full h-auto md:h-[70vh] md:w-1/2 flex flex-col justify-between">
                   <div>
                     <div className=" italic">
                       <svg
-                        class="w-8 h-8 text-white rotate-180 inline-block mb-4"
+                        class="w-8 h-8 text-gray-400 dark:text-[#FFD700] rotate-180 inline-block mb-4"
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -104,28 +124,28 @@ export default function Project() {
                       </svg>
                       <p
                         key={item[state].id}
-                        className="tracking-wider  text-md break-all leading-9 ">
+                        className="tracking-wider text-nowrap  text-md break-all leading-9 text-gray-400 dark:text-[#FFD700] ">
                         {item[state].description1}
                       </p>
                       <br />
-                      <p
+                      {/* <p
                         key={item[state].id}
-                        className="hidden md:flex  tracking-wider  text-md break-all leading-9">
+                        className="hidden md:flex  tracking-wider text-gray-400 dark:text-[#FFD700]  text-md break-all leading-9">
                         {item[state].description2}
-                      </p>
+                      </p> */}
                       <br className="hidden md:flex" />
                     </div>
                     <div className="tag flex gap-4 flex-wrap">
                       {item[state].tags.map((el, index) => (
                         <span
                           key={index}
-                          className="bg-[#FFD700] px-2 rounded-xl font-semibold text-md text-[#1d0039]">
+                          className="dark:bg-[#FFD700] bg-gray-400   px-2 rounded-xl font-semibold text-md text-gray-900 dark:text-[#1d0039]">
                           {el}
                         </span>
                       ))}
                     </div>
                   </div>
-                  <div className="py-3 flex gap-3">
+                  <div className="py-3 flex gap-3 text-gray-400 dark:text-white">
                     <span>
                       <Link href={item[state].link1}>
                         <GitHubIcon className="text-4xl" />
@@ -139,25 +159,31 @@ export default function Project() {
                   </div>
                 </div>
               </div>
-              <hr className="my-3 w-full md:w-5/6 mx-auto" />
+              </div>
+             
             </motion.div>
+          
+            </Section>
+             
           )}
 
-          <div className="flex justify-center mt-2 gap-2">
+        </div>
+        <hr className="mt-3 w-full md:w-5/6 mx-auto bg-[#1d0039] dark:bg-[#FFD700]" />
+        
+        <div className="flex justify-center mt-2 gap-2 text-gray-400 dark:text-[#FFD700]">
             <span>
               <FastRewindIcon
-                className="text-4xl cursor-pointer hover:text-[#FFD700] hover:scale-110"
+                className="text-4xl cursor-pointer hover:animate-none hover:text-[#FFD700] animate-pulse hover:scale-110"
                 onClick={handleClickBackward}
               />
             </span>{" "}
             <span>
               <FastForwardIcon
-                className="text-4xl cursor-pointer hover:text-[#FFD700] hover:scale-110"
+                className="text-4xl animate-pulse hover:animate-none cursor-pointer hover:text-[#FFD700] hover:scale-110"
                 onClick={handleClickForward}
               />
             </span>
           </div>
-        </div>
       </div>
     </>
   );
