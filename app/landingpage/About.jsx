@@ -15,7 +15,7 @@ export default function About() {
           About Me
         </div>
         <div 
-          className=" flex flex-col-reverse md:flex-row justify-center md:w-4/5 w-full   items-center md:mx-auto  my-2 ">
+          className=" flex flex-col-reverse md:flex-row justify-center md:w-4/5 w-full gap-3   items-center md:mx-auto  my-2 ">
           <div className=" w-full md:w-[50%] flex justify-center items-center">
             <p className="  tracking-wider  text-md  break-all  leading-9 first-letter:text-6xl first-letter:inline-block first-letter:float-left first-letter:mr-15 text-gray-400 dark:text-[#ffffff] ">
             👋 Hello there! I'm <strong className=" text-[#FFD700]">Sachin Verma</strong>, a passionate third-year Computer
@@ -25,8 +25,8 @@ export default function About() {
               ever-evolving world of technology
             </p>
           </div>
-          <div className=" relative h-[300px] w-full md:w-[50%]">
-            <Image src={"/p5.jpg"} fill className=" object-contain object-bottom  contrast-125 brightness-90 saturate-125" alt='/' />
+          <div className=" relative h-[300px] w-auto md:w-[48%] ">
+            <Image src={"/og.jpg"} fill className=" object-cover  aspect-square  contrast-125 brightness-90 saturate-125 grayscale hover:filter-none  hover:scale-75 transition-transform delay-300 rounded-md" alt='/'  />
           </div>
         </div>
       </div>

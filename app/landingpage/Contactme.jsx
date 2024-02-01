@@ -13,6 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Section from '../../components/Section/Section'
+// import {sendMail} from '../api/Sendmail/route'
 
 
 export default function Contactme() {
@@ -31,6 +32,17 @@ export default function Contactme() {
     try {
       if (form.description !== "" && form.name !== "" && form.email !== "") {
         if (isValidEmail(form.email)) {
+
+          const res = fetch('api/Sendmail',{
+            method:'post',
+            body:JSON.stringify({
+              'subject':form.name,
+              'toEmail':'sk.sachin9128@gmail.com',
+              'otpText':form.description
+          })
+          })
+         
+
           await addDoc(collection(db, "Message from visited user"), {
             name: form.name,
             email: form.email,
@@ -50,6 +62,18 @@ export default function Contactme() {
       console.error("Error adding document: ", error);
       notify("An error occurred. Please try again later.", "error");
     }
+
+
+   
+      // await sendMail(
+      //   "TEST",
+      //   "dontkillme@bunnyfiedlabs.com",
+      //   "THI IS A TEST FOR MY MEDIUM USERS"
+      // );
+
+    
+
+
   };
 
   return (
@@ -87,13 +111,13 @@ export default function Contactme() {
           </div>
 
           <div className="mx-auto dark:text-[#FFD700]  text-gray-400 pt-4">
-            <form className="flex flex-col gap-2 ">
+            <form className="flex flex-col  gap-2 ">
               <label className=" pl-2 font-medium">
                 Name<sup className="text-red-600"> *</sup>
               </label>
               <input
                 type="text"
-                className="bg-gray-200 h-[50px] rounded-lg pl-4"
+                className="bg-gray-200 text-black h-[50px] rounded-lg pl-4"
                 required
                 placeholder="Enter Your Name..."
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -106,7 +130,7 @@ export default function Contactme() {
                 type="email"
                 pattern={isValidEmail.pattern}
                 required
-                className="bg-gray-200 h-[50px] rounded-lg pl-4"
+                className="bg-gray-200 text-black h-[50px] rounded-lg pl-4"
                 placeholder="Email..."
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 value={form.email}
@@ -117,12 +141,12 @@ export default function Contactme() {
               <textarea
                 id="message"
                 rows="4"
-                className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500"
+                className="block text-black p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:placeholder-gray-400 dark:focus:border-blue-500"
                 placeholder="Leave a comment..."
                 onChange={(e) => setForm({ ...form, description: e.target.value })}
                 value={form.description}
               ></textarea>
-              <button
+              <button 
                 onClick={handleSubmit}
                 className="trivia inline-block my-4 text-center p-3 rounded-lg float-right font-bold py-1 text-2xl text-blue-600 hover:scale-110 shadow-lg bg-gradient-to-r from-[#ece9ef] via-purple-400 to-purple-600"
               >

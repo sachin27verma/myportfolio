@@ -130,11 +130,11 @@ export default function Herosection() {
                       y2="0">
                       <stop
                         id="stop1"
-                        stop-color="rgba(248, 55, 126.926, 1)"
+                        stop-color="rgba(213, 184, 255, 1)"
                         offset="0%"></stop>
                       <stop
                         id="stop2"
-                        stop-color="rgba(251, 247.149, 31, 1)"
+                        stop-color="rgba(90, 34, 139, 1)"
                         offset="100%"></stop>
                     </linearGradient>
                   </defs>
@@ -163,7 +163,7 @@ export default function Herosection() {
                       width="125"
                       height="125"
                       href="/p04.png"
-                      className="filter overflow-hidden custom-drop-shadow"
+                      className="  overflow-hidden filter:drop-shadow: "
                       alt='/'
                     />
                   </g>

@@ -19,6 +19,7 @@
     "framer-motion": "^10.16.4",
     "next": "14.0.1",
     "next-auth": "^5.0.0-beta.4",
+    "nodemailer": "^6.9.8",
     "particles.js": "^2.0.0",
     "pspdfkit": "^2023.5.4",
     "react": "^18",
