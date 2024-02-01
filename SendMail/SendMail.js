@@ -22,13 +22,14 @@ export default async function sendMail(subject, toEmail, otpText) {
   };
 
 
- await transporter.sendMail(mailOptions, function (error, info) {
-    // console.log("under gush gaya hu..")
-    if (error) {
-      // console.log("error hai bhai", error)
-    } else {
-      // console.log("Email Sent",info);
-      return true;
-    }
+  await new Promise((resolve, reject) => {
+    // send mail
+    transporter.sendMail(mailOptions, (err, response) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(response);
+      }
+    });
   });
 }
