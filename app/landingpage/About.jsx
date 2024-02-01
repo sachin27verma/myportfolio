@@ -25,7 +25,7 @@ export default function About() {
               ever-evolving world of technology
             </p>
           </div>
-          <div className=" relative h-[300px] w-auto md:w-[48%] ">
+          <div className=" relative h-[300px] w-full md:w-[48%] ">
             <Image src={"/og.jpg"} fill className=" object-cover  aspect-square  contrast-125 brightness-90 saturate-125 grayscale hover:filter-none  hover:scale-75 transition-transform delay-300 rounded-md" alt='/'  />
           </div>
         </div>
