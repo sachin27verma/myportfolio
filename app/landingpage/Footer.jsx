@@ -7,7 +7,7 @@ export default function Footer() {
         <hr className=' w-5/6 mx-auto   decoration-dotted border-0 dark:bg-white bg-gray-400 
         dark:text-[#ffffff] text-gray-400 ' />
         <div className=' text-center my-2 mt-4'>
-            <p className=' font-semibold tracking-widest '> Made With 💖 & 🤧 </p>
+            <p className=' text-[#4BFCE1] font-semibold tracking-widest '> Made With 💖 & 🤧 </p>
 
         </div>
         </div>
