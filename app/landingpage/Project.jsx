@@ -75,13 +75,18 @@ export default function Project() {
 
   return (
     <>
-      <div id='project' className=" fancy-border  h-auto md:h-screen   ">
+      <div id='project' className=" fancy-border  h-auto transition-transform  ">
         <div className="text-center text-3xl text-gray-400 dark:text-[#FFD700] py-2 pb-0 mb-3 font-bold digital-font">
           PROJECT
         </div>
         <div className="w-full mx-auto  gap-3 relative">
           {loading || item.length === 0 ? (
-            <h1 className="flex justify-center items-center">Loading....</h1>
+            // <h1 className="flex justify-center items-center">Loading....</h1>
+            
+      <div className=" flex justify-center items-center h-19 w-19 text-3xl text-violet-700">
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" ><g><path fill="#888888" d="M7 3H17V7.2L12 12L7 7.2V3Z"><animate id="eosIconsHourglass0" fill="freeze" attributeName="opacity" begin="0;eosIconsHourglass1.end" dur="2s" from="1" to="0"></animate></path><path fill="#888888" d="M17 21H7V16.8L12 12L17 16.8V21Z"><animate fill="freeze" attributeName="opacity" begin="0;eosIconsHourglass1.end" dur="2s" from="0" to="1"></animate></path><path fill="#888888" d="M6 2V8H6.01L6 8.01L10 12L6 16L6.01 16.01H6V22H18V16.01H17.99L18 16L14 12L18 8.01L17.99 8H18V2H6ZM16 16.5V20H8V16.5L12 12.5L16 16.5ZM12 11.5L8 7.5V4H16V7.5L12 11.5Z"></path><animateTransform id="eosIconsHourglass1" attributeName="transform" attributeType="XML" begin="eosIconsHourglass0.end" dur="0.5s" from="0 12 12" to="180 12 12" type="rotate"></animateTransform></g></svg></div>
+
           ) : (
             <Section>
             <motion.div
