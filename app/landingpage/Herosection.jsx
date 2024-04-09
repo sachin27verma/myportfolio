@@ -15,6 +15,12 @@ import * as THREE from 'three';
 import { motion } from 'framer-motion';
 import Togglevalue from '../../components/Togglevalue'
 import Section from '../../components/Section/Section'
+import {Whatsapp} from '../../components/Icons/Iconsvg'
+import {Insta} from '../../components/Icons/Iconsvg'
+import {Linkedin} from '../../components/Icons/Iconsvg'
+import {Github} from '../../components/Icons/Iconsvg'
+import {Twitter} from '../../components/Icons/Iconsvg'
+import '../../styles/herostyle.css'
 
 export default function Herosection() {
   const [vantaEffect, setVantaEffect] = useState(null);
@@ -64,9 +70,9 @@ export default function Herosection() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="h-[450px] md:min-h-screen pb-4 mb-4 flex justify-between flex-wrap items-center relative"
+            className="h-[470px] md:min-h-screen pb-8 mb-2 flex justify-between flex-wrap items-center relative"
           >
-            <div className="w-full md:w-[50%]">
+            <div className="w-full h-full  md:w-[50%]">
               <div className="flex justify-center items-center flex-col h-full">
                 <div className="text-center md:text-left">
                   <div className="relative flex justify-center">
@@ -94,24 +100,34 @@ export default function Herosection() {
                     </q>
                     <br />
                   </p>
-                  <p className="flex text-gray-400 dark:text-[#FFD700] justify-center pt-2 gap-3">
-                    <Link href="https://www.instagram.com/triflate_/">
-                      <InstagramIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />{' '}
-                    </Link>{' '}
-                    <Link href="https://github.com/sachin27verma">
-                      {' '}
-                      <GitHubIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />
-                    </Link>{' '}
-                    <Link href="https://www.linkedin.com/in/sachin-kumar-79125122a/">
-                      <LinkedInIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />
-                    </Link>{' '}
-                    <Link href="https://twitter.com/triflate_">
-                      <TwitterIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce" />
-                    </Link>
-                    <Link href="www">
-                      <WhatsAppIcon className=" hover:text-gray-400 text-gray-200 hover:dark:text-[#FFD700] hover:animate-bounce " />{' '}
-                    </Link>
-                  </p>
+                  <ul className="flex flex-wrap justify-center gap-1">
+  <li>
+    <a href="https://www.instagram.com/triflate_/" className="relative flex justify-center items-center w-14 h-14 text-center leading-12 bg-gray-800 rounded-full text-3xl text-gray-400 transition duration-500 hover:text-yellow-500  hover:shadow-lg hover:text-shadow-lg">
+      <InstagramIcon />
+    </a>
+  </li>
+  <li>
+    <a href="https://github.com/sachin27verma" className="relative flex justify-center items-center w-14 h-14 text-center leading-12 bg-gray-800 rounded-full text-3xl text-gray-400 transition duration-500 hover:text-yellow-500 hover:shadow-lg hover:text-shadow-lg">
+      <GitHubIcon />
+    </a>
+  </li>
+  <li>
+    <a href="https://www.linkedin.com/in/sachin-kumar-79125122a/" className="relative flex justify-center items-center w-14 h-14 text-center leading-12 bg-gray-800 rounded-full text-3xl text-gray-400 transition duration-500 hover:text-yellow-500 hover:shadow-lg hover:text-shadow-lg">
+      <LinkedInIcon />
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/triflate_" className="relative flex justify-center items-center w-14 h-14 text-center leading-12 bg-gray-800 rounded-full text-3xl text-gray-400 transition duration-500 hover:text-yellow-500 hover:shadow-lg hover:text-shadow-lg">
+      <TwitterIcon />
+    </a>
+  </li>
+  {/* <li>
+    <a href="#" className="relative flex justify-center items-center w-14 h-14 text-center leading-12  bg-gray-800 rounded-full text-3xl text-gray-400 transition duration-500 hover:text-yellow-500 hover:shadow-lg hover:text-shadow-lg">
+      <WhatsAppIcon />
+    </a>
+  </li> */}
+</ul>
+
                 </div>
               </div>
             </div>

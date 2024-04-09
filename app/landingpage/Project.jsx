@@ -12,6 +12,7 @@ import { collection, query, onSnapshot } from "firebase/firestore";
 import Section from '../../components/Section/Section'
 
 
+
 export default function Project() {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
