@@ -100,11 +100,12 @@ export default function Project() {
               </p> 
               <div className=" flex flex-row ">
               <div className="w-full md:w-5/6 mx-auto h-auto rounded-lg relative flex flex-col md:flex-row gap-4">
-                <div className="h-[400px] md:h-[70vh] w-full md:w-1/2  relative group">
+                <div className=" h-[400px] md:h-auto w-full md:w-1/2  relative group">
                   <Image
                     key={item[state].id}
                     src={item[state].image1}
                     fill
+                    // objectFit="cover"
                     className="object-full z-10 rounded-lg"
                     alt="project image"
                   />
@@ -117,7 +118,7 @@ export default function Project() {
                   />
                 </div>
 
-                <div className="w-full h-auto md:h-[70vh] md:w-1/2 flex flex-col justify-between">
+                <div className="w-full  md:w-1/2 flex flex-col justify-between">
                   <div>
                     <div className=" italic">
                       <svg
