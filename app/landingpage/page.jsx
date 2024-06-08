@@ -8,9 +8,9 @@ import Footer from "./Footer";
 
 export default function Landingpage() {
 
- 
+  // style={{ backgroundImage: 'url("/aibc24.jpg")' }}
   return (
-    <>
+    <  >
       <Herosection />
       <Project />
       <About />
