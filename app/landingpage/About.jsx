@@ -1,12 +1,12 @@
 'use client'
-import React,{useRef} from "react";
+import React,{useRef,useState} from "react";
 import "../../styles/fonts.css";
 import Image from "next/image";
 
 import Section from '../../components/Section/Section'
 
 export default function About() {
-  
+  const [isHovered, setIsHovered] = useState(false);
   return (
     <Section>
     <div>
@@ -25,9 +25,25 @@ export default function About() {
               ever-evolving world of technology
             </p>
           </div>
-          <div className=" relative h-[300px] w-full md:w-[48%] ">
-            <Image src={"/og.jpg"} fill className=" object-cover  aspect-square  contrast-125 brightness-90 saturate-125 grayscale hover:filter-none  hover:scale-75 transition-transform delay-300 rounded-md" alt='/'  />
-          </div>
+          <div
+      className="relative h-[300px] w-full md:w-[48%] transition-transform duration-300 ease-in-out"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      style={{
+        boxShadow: isHovered ? '0px 0px 0px rgba(255, 255, 255, 0)' : '10px 10px 5px rgba(255, 255, 255, 0.5)',
+        transform: isHovered ? 'translateY(-10px) scale(0.9) ' : 'none',
+        transition: 'transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out',
+      }}
+    >
+      <Image
+        src="/og.jpg"
+        fill
+        className={`object-cover aspect-square contrast-125 brightness-90 saturate-125 grayscale rounded-md ${
+          isHovered ? 'filter-none scale-90' : ''
+        }`}
+        alt="/"
+      />
+    </div>
         </div>
       </div>
       </div>
