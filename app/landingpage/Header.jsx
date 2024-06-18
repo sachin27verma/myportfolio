@@ -103,12 +103,12 @@ const Header = () => {
                 <p className="text-xs hidden md:block">SACHIN VERMA</p>
               </motion.div>
             </div>
-            <div  className=" flex">
+            <div  className=" md:flex absolute z-10 rotate-90 md:rotate-0 translate-y-32 -translate-x-32 md:translate-x-44 md:translate-y-0 ">
                   {/* <p className="text-xl font-bold text-center animate-pulse">
                     {greeting}
                   </p> */}
                  <div className="flex gap-0 ">
-                 <Display value={time.slice(0, 2)} padding='0' className= ' inline-block m-0 p-0 ' width='15' height="15" count={2} />
+                 <Display value={time.slice(0, 2)} padding='0' className= 'inline-block m-0 p-0' width='10' height="15" count={2} style={{"padding":'0px'}} />
   <Display value={time.slice(3, 5)} height="15" count={2} />
   <Display value={time.slice(6, 8)} height="15" count={2} />
                  </div>

@@ -13,6 +13,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Section from '../../components/Section/Section'
+import { Monoton } from 'next/font/google';
+const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 // import {sendMail} from '../api/Sendmail/route'
 
 
@@ -83,7 +85,7 @@ export default function Contactme() {
 
         
        
-        <div className="digital-font text-3xl text-center">
+        <div className={`text-3xl text-center ${monoton.className}`}>
           Contact me
         </div>
         <div className="my-4 mt-1   mx-2 md:mx-auto relative">

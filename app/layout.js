@@ -1,6 +1,7 @@
-import { Inter } from 'next/font/google'
+import { Inter,Monoton } from 'next/font/google'
 import './globals.css'
 import Head from 'next/head';
+
 // import "../styles/fonts.css";
 require('dotenv').config();
 

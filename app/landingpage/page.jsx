@@ -5,6 +5,7 @@ import About from "./About";
 import Skill from "./Skill";
 import Contactme from "./Contactme";
 import Footer from "./Footer";
+import CodingProfile from "./CodingProfile";
 
 export default function Landingpage() {
 
@@ -12,6 +13,7 @@ export default function Landingpage() {
   return (
     <  >
       <Herosection />
+      <CodingProfile />
       <Project />
       <About />
       <Skill />

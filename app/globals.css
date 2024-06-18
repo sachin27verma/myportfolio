@@ -14,6 +14,17 @@
   font-family: 'Pixelify Sans', sans-serif;
 }
 
+/* // <uniquifier>: Use a unique and descriptive class name
+// <weight>: Use a value from 100 to 400 */
+
+.monoton-regular {
+  font-family: "Monoton", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+
 .custom-drop-shadow {
   filter: drop-shadow(0 0 10px #FFD700); /* Change #ffffff to your desired shadow color */
 }

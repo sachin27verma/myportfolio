@@ -2,6 +2,8 @@
 import React,{useRef,useState} from "react";
 import "../../styles/fonts.css";
 import Image from "next/image";
+import { Monoton } from 'next/font/google';
+const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 
 import Section from '../../components/Section/Section'
 
@@ -11,7 +13,7 @@ export default function About() {
     <Section>
     <div>
       <div id='aboutme' className=" relative py-4 block ">
-        <div className=" digital-font text-3xl text-center  text-gray-400 dark:text-[#FFD700]">
+        <div className={`text-xl md:text-4xl text-center tracking-wide my-4 mb-6 ${monoton.className} `}>
           About Me
         </div>
         <div 

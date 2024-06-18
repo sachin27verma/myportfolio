@@ -10,7 +10,8 @@ import FastRewindIcon from "@mui/icons-material/FastRewind";
 import { db } from "../../firebase/Firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
 import Section from '../../components/Section/Section'
-
+import { Monoton } from 'next/font/google';
+const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 
 
 export default function Project() {
@@ -77,8 +78,8 @@ export default function Project() {
   return (
     <>
       <div id='project' className=" fancy-border  h-auto transition-transform  ">
-        <div className="text-center text-3xl text-gray-400 dark:text-[#FFD700] py-2 pb-0 mb-3 font-bold digital-font">
-          PROJECT
+        <div className={`text-xl md:text-4xl text-center tracking-wide my-4 mb-6 ${monoton.className}`}>
+          PROJECTs
         </div>
         <div className="w-full mx-auto  gap-3 relative">
           {loading || item.length === 0 ? (
