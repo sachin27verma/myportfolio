@@ -1,80 +1,173 @@
-import React from 'react';
+'use client';
+import React, { useRef } from 'react';
 import Link from 'next/link';
 import { Monoton } from 'next/font/google';
-const monoton = Monoton({ subsets: ['latin'], weight: '400' });
-// import { SimpleIconsCodeforces, SimpleIconsGeeksforgeeks, SimpleIconsCodechef } from 'react-icons/si';
-// import { CibLeetcode } from 'react-icons/cib';
+import { motion, useInView } from 'framer-motion';
+// import { SimpleIconsCodeforces, SimpleIconsGeeksforgeeks, SimpleIconsCodechef } from '@icons-pack/react-simple-icons';
+// import { CibLeetcode } from '@icons-pack/react-simple-icons';
 // import { RiShareCircleFill } from 'react-icons/ri';
 
+const monoton = Monoton({ subsets: ['latin'], weight: '400' });
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.8,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -100 },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    transition: { 
+      duration: 0.8, 
+      ease: 'easeInOut',
+      type: 'spring',
+      stiffness: 300,
+      damping: 20,
+    } 
+  },
+};
+
+const itemHover = {
+  scale: 1.05,
+  rotate: 5,
+  transition: {
+    type: 'spring',
+    stiffness: 300,
+    damping: 20,
+  }
+};
+
+const textVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: 'easeInOut',
+    },
+  },
+};
 
 export default function CodingProfile() {
-    return (
-      <div className='my-7'>
-        <h1 className={`${monoton.className} text-xl md:text-4xl text-center tracking-wide my-4 mb-6`}>Coding Profile</h1>
-        <div className='flex gap-4 justify-evenly flex-wrap'>
-          <div className='min-w-[300px] bg-gradient-to-r from-blue-600 to-indigo-900 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'>
-            <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
-              <SimpleIconsCodeforces className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-blue-400' />
-            </div>
-            <div className='text-white'>
-              <h2 className='text-lg font-bold tracking-wider'>CodeForces</h2>
-              <h3 className='text-sm text-gray-300'>Max R: 1254</h3>
-            </div>
-            <div>
-              <Link href='https://codeforces.com/profile/sk.sachin9128'>
-                <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-blue-400 hover:bg-white hover:rounded-full hover:p-1' />
-              </Link>
-            </div>
+  const codingProfileRef = useRef(null);
+  const isInView = useInView(codingProfileRef, { once: true });
+
+  return (
+    <motion.div
+      ref={codingProfileRef}
+      className='my-7'
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={containerVariants}
+    >
+      <motion.h1
+        className={`${monoton.className} text-xl md:text-4xl text-center tracking-wide my-4 mb-6`}
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+          visible: {
+            transition: {
+              staggerChildren: 0.05,
+            },
+          },
+        }}
+      >
+        {'Coding Profile'.split('').map((char, index) => (
+          <motion.span key={index} variants={textVariants}>
+            {char}
+          </motion.span>
+        ))}
+      </motion.h1>
+      <motion.div className='flex gap-4 justify-evenly flex-wrap'>
+        <motion.div
+          className='min-w-[330px] md:min-w-[300px] bg-gradient-to-r from-blue-600 to-indigo-900 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'
+          variants={itemVariants}
+          whileHover={itemHover}
+        >
+          <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
+            <SimpleIconsCodeforces className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-blue-400' />
           </div>
-  
-          <div className='min-w-[300px] bg-gradient-to-r from-amber-400 to-yellow-800 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'>
-            <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
-              <CibLeetcode className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-yellow-500' />
-            </div>
-            <div className='text-white'>
-              <h2 className='text-lg font-bold tracking-wider'>LeetCode</h2>
-              <h3 className='text-sm text-gray-300'>200+ Problems</h3>
-            </div>
-            <div>
-              <Link href='https://leetcode.com/u/triflate/'>
-                <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-yellow-500 hover:bg-white hover:rounded-full hover:p-1' />
-              </Link>
-            </div>
+          <div className='text-white'>
+            <h2 className='text-lg font-bold tracking-wider'>CodeForces</h2>
+            <h3 className='text-sm text-gray-300'>Max R: 1254</h3>
           </div>
-  
-          <div className='min-w-[300px] bg-gradient-to-r from-emerald-500 to-emerald-900 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'>
-            <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
-              <SimpleIconsGeeksforgeeks className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-emerald-600' />
-            </div>
-            <div className='text-white'>
-              <h2 className='text-lg font-bold tracking-wider'>GFG</h2>
-              <h3 className='text-sm text-gray-300'>200+ Problems</h3>
-            </div>
-            <div>
-              <Link href='https://www.geeksforgeeks.org/user/triflate/'>
-                <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-emerald-600 hover:bg-white hover:rounded-full hover:p-1' />
-              </Link>
-            </div>
+          <div>
+            <Link href='https://codeforces.com/profile/sk.sachin9128'>
+              <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-blue-400 hover:bg-white hover:rounded-full hover:p-1' />
+            </Link>
           </div>
-  
-          <div className='min-w-[300px]  bg-gradient-to-r from-stone-500 to-stone-700 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'>
-            <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
-              <SimpleIconsCodechef className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-stone-400' />
-            </div>
-            <div className='text-white'>
-              <h2 className='text-lg font-bold tracking-wider'>CodeChef</h2>
-              <h3 className='text-sm text-gray-300'>Rating:1154</h3>
-            </div>
-            <div>
-              <Link href='https://www.codechef.com/users/triflate'>
-                <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-stone-400 hover:bg-white hover:rounded-full hover:p-1' />
-              </Link>
-            </div>
+        </motion.div>
+
+        <motion.div
+          className='min-w-[330px]  md:min-w-[300px] bg-gradient-to-r from-amber-400 to-yellow-800 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'
+          variants={itemVariants}
+          whileHover={itemHover}
+        >
+          <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
+            <CibLeetcode className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-yellow-500' />
           </div>
-        </div>
-      </div>
-    );
-  }
+          <div className='text-white'>
+            <h2 className='text-lg font-bold tracking-wider'>LeetCode</h2>
+            <h3 className='text-sm text-gray-300'>200+ Problems</h3>
+          </div>
+          <div>
+            <Link href='https://leetcode.com/u/triflate/'>
+              <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-yellow-500 hover:bg-white hover:rounded-full hover:p-1' />
+            </Link>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className='min-w-[330px]  md:min-w-[300px] bg-gradient-to-r from-emerald-500 to-emerald-900 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'
+          variants={itemVariants}
+          whileHover={itemHover}
+        >
+          <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
+            <SimpleIconsGeeksforgeeks className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-emerald-600' />
+          </div>
+          <div className='text-white'>
+            <h2 className='text-lg font-bold tracking-wider'>GFG</h2>
+            <h3 className='text-sm text-gray-300'>200+ Problems</h3>
+          </div>
+          <div>
+            <Link href='https://www.geeksforgeeks.org/user/triflate/'>
+              <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-emerald-600 hover:bg-white hover:rounded-full hover:p-1' />
+            </Link>
+          </div>
+        </motion.div>
+
+        <motion.div
+          className='min-w-[330px]  md:min-w-[300px]   bg-gradient-to-r from-stone-500 to-stone-700 flex gap-3 items-center justify-evenly p-4 rounded-lg shadow-lg transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-2xl'
+          variants={itemVariants}
+          whileHover={itemHover}
+        >
+          <div className='rounded-full bg-gray-900 p-4 transition-transform duration-300 ease-in-out'>
+            <SimpleIconsCodechef className='text-white text-3xl transition-colors duration-300 ease-in-out hover:text-stone-400' />
+          </div>
+          <div className='text-white'>
+            <h2 className='text-lg font-bold tracking-wider'>CodeChef</h2>
+            <h3 className='text-sm text-gray-300'>Rating:1154</h3>
+          </div>
+          <div>
+            <Link href='https://www.codechef.com/users/triflate'>
+              <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-stone-400 hover:bg-white hover:rounded-full hover:p-1' />
+            </Link>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 
 
 
