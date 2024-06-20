@@ -230,7 +230,7 @@ const Header = () => {
               </div>
 
               <div className="p-2 border-2 border-gray-100 bg-gray-100 rounded-md shadow-md hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105">
-                <Link href="https://drive.google.com/file/d/1nDIzzp7o7bA8ZXhCINkROLu70y-oF7eW/view?usp=sharing">
+                <Link href="https://drive.google.com/file/d/1lhND2Rxe-59wOKdOn3y-nHj0oYFZjcHa/view?usp=drive_link">
                   <p
                     className="text-lg font-bold text-[#1d0039]"
                     target="blank">
@@ -276,7 +276,7 @@ const Header = () => {
                 <Themetoggle />
               </li>
 
-              <Link href="https://drive.google.com/file/d/1nDIzzp7o7bA8ZXhCINkROLu70y-oF7eW/view?usp=sharing">
+              <Link href="https://drive.google.com/file/d/1lhND2Rxe-59wOKdOn3y-nHj0oYFZjcHa/view?usp=drive_link">
                 <p className="text-lg font-bold text-[#1d0039]" target="blank">
                   Resume
                 </p>

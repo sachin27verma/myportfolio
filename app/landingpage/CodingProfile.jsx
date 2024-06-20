@@ -14,35 +14,35 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.8,
-      delayChildren: 0.3,
+      staggerChildren: 0.3,
+      delayChildren: 0.2,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -100 },
-  visible: { 
-    opacity: 1, 
-    x: 0, 
-    transition: { 
-      duration: 0.8, 
+  hidden: { opacity: 0, x: -50 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
       ease: 'easeInOut',
       type: 'spring',
-      stiffness: 300,
-      damping: 20,
-    } 
+      stiffness: 100,
+      damping: 15,
+    },
   },
 };
 
 const itemHover = {
   scale: 1.05,
-  rotate: 5,
+  rotate: 2,
   transition: {
     type: 'spring',
-    stiffness: 300,
-    damping: 20,
-  }
+    stiffness: 200,
+    damping: 10,
+  },
 };
 
 const textVariants = {
@@ -167,6 +167,7 @@ export default function CodingProfile() {
     </motion.div>
   );
 }
+
 
 
 

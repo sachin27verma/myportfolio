@@ -9,7 +9,7 @@ export default function SkillCard({ badge, level }) {
 
   return (
     <div
-      className={`h-[100px] w-[100px] md:h-[125px] md:w-[125px] relative flex justify-center items-center rounded-full shadow-lg transition-transform duration-300 ease-in-out transform bg-gradient-radial from-gray-400 via-gray-500 to-gray-600 dark:from-[#FFD700] dark:via-[#c196d6] dark:to-[#8442cb] dark:bg-[#89739f] ring-4 ${
+      className={`h-[100px] w-[100px] relative flex justify-center items-center rounded-full shadow-lg transition-transform duration-300 ease-in-out transform bg-gradient-radial from-gray-400 via-gray-500 to-gray-600 dark:from-[#FFD700] dark:via-[#c196d6] dark:to-[#8442cb] dark:bg-[#89739f] ring-4 ${
         isHovered ? 'shadow-xl ring-6 ring-white -translate-y-1 scale-110 rotate-12' : 'ring-white'
       }`}
       style={{
@@ -21,12 +21,12 @@ export default function SkillCard({ badge, level }) {
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* <Image src={"/tradbc.png"} fill className="hover:animate-spin" /> */}
-      {!isHovered && <div className="absolute z-6">{badge}</div>}
-      {isHovered && (
+      { <div className="absolute z-6">{badge}</div>}
+      {/* {isHovered && (
         <div className="rounded-full p-3 aspect-square flex justify-center items-center text-center font-extrabold absolute text-md text-white dark:text-black">
           {level}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
