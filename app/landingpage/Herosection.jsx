@@ -26,7 +26,7 @@ export default function Herosection() {
     >
       <Header />
 
-      <div className="flex justify-center w-full h-full mt-16">
+      <div className="flex justify-center w-full h-full mt-16 md:mt-0 ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function Herosection() {
                 className="mb-2"
                 src="https://fontmeme.com/permalink/240703/5ca9fab80f45cd0987f567ad8d790872.png"
                 alt="one-piece-font"
-                width={550}
+                width={500}
                 height={100}
                 layout="responsive"
               />
