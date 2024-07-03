@@ -25,6 +25,7 @@
 
 
 
+
 .custom-drop-shadow {
   filter: drop-shadow(0 0 10px #FFD700); /* Change #ffffff to your desired shadow color */
 }
@@ -149,4 +150,17 @@ body {
   filter: blur(20px);
   opacity: 1;
   animation: animate 8s linear infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 5px rgb(244, 240, 240);
+  }
+  50% {
+    box-shadow: 0 0 15px 10px rgb(238, 228, 228);
+  }
+}
+
+.glow-effect {
+  animation: glow 1.5s infinite;
 }

@@ -81,7 +81,18 @@ export default function Contactme() {
   return (
     <Section>
       
-      <div id="contact" className="dark:bg-[#3a1a59] bg-gray-700 text-gray-200 shadow-2xl rounded-lg mx-2  w-6/6 md:w-2/6 md:mx-auto p-3 drop-shadow-2xl  py-4 ">
+      <div id="contact" className="dark:bg-[#3a1a59] bg-gray-700 text-gray-200 shadow-2xl rounded-lg mx-2  w-6/6 md:w-2/6 md:mx-auto p-3 drop-shadow-2xl  py-4 " 
+      style={{
+        backgroundImage: 'url("/joly.png")',
+        backgroundRepeat: "no-repeat",
+        // backgroundSize: "fit",
+        backgroundPosition: "center",
+        // backgroundAttachment: "fixed",
+        backdropFilter: "blur(10px)",
+        backgroundBlendMode: "darken",
+        backgroundSize:"150% 100%"
+      }}
+      >
 
         
        

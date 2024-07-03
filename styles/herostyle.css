@@ -51,3 +51,9 @@
     box-shadow: 0 0 5px #ffee10;
     text-shadow: 0 0 5px #ffee10;
   }
+
+  .jaini-purva-regular {
+    font-family: "Jaini Purva", system-ui;
+    font-weight: 400;
+    font-style: normal;
+  }

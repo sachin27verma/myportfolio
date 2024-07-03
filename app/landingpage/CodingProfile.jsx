@@ -3,9 +3,7 @@ import React, { useRef } from 'react';
 import Link from 'next/link';
 import { Monoton } from 'next/font/google';
 import { motion, useInView } from 'framer-motion';
-// import { SimpleIconsCodeforces, SimpleIconsGeeksforgeeks, SimpleIconsCodechef } from '@icons-pack/react-simple-icons';
-// import { CibLeetcode } from '@icons-pack/react-simple-icons';
-// import { RiShareCircleFill } from 'react-icons/ri';
+
 
 const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 
@@ -64,7 +62,7 @@ export default function CodingProfile() {
   return (
     <motion.div
       ref={codingProfileRef}
-      className='my-7'
+      className='my-7 '
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={containerVariants}

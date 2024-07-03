@@ -71,7 +71,9 @@ export default function RootLayout({ children }) {
 </script> */}
       {/* </Head> */} 
      
-      <body className={inter.className}> <main className='dark:bg-[#1d0039] bg-gray-900 '>{children}</main></body>
+      <body className={inter.className}> <main className='
+      dark:bg-[#1d0039] bg-gray-900
+       '>{children}</main></body>
     </html>
   )
 }
