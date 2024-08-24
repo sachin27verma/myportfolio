@@ -115,7 +115,7 @@ export default function CodingProfile() {
           </div>
           <div className='text-white'>
             <h2 className='text-lg font-bold tracking-wider'>LeetCode</h2>
-            <h3 className='text-sm text-gray-300'>200+ Problems</h3>
+            <h3 className='text-sm text-gray-300'>350+ Problems</h3>
           </div>
           <div>
             <Link href='https://leetcode.com/u/triflate/'>
@@ -134,7 +134,7 @@ export default function CodingProfile() {
           </div>
           <div className='text-white'>
             <h2 className='text-lg font-bold tracking-wider'>GFG</h2>
-            <h3 className='text-sm text-gray-300'>200+ Problems</h3>
+            <h3 className='text-sm text-gray-300'>300+ Problems</h3>
           </div>
           <div>
             <Link href='https://www.geeksforgeeks.org/user/triflate/'>
@@ -153,10 +153,10 @@ export default function CodingProfile() {
           </div>
           <div className='text-white'>
             <h2 className='text-lg font-bold tracking-wider'>CodeChef</h2>
-            <h3 className='text-sm text-gray-300'>Rating:1154</h3>
+            <h3 className='text-sm text-gray-300'>Rating:1604</h3>
           </div>
           <div>
-            <Link href='https://www.codechef.com/users/triflate'>
+            <Link href='https://www.codechef.com/users/sunnydas45'>
               <RiShareCircleFill className='text-white text-2xl transition-colors duration-300 ease-in-out hover:text-stone-400 hover:bg-white hover:rounded-full hover:p-1' />
             </Link>
           </div>
