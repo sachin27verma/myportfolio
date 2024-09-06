@@ -12,7 +12,7 @@ import { scrolltoHash } from './Header';
 export default function Herosection() {
   return (
     <div
-      className="relative h-screen"
+      className="relative h-screen  grayscale dark:grayscale-0"
       style={{
         backgroundImage:
           'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(216,0,244,1) 50%), url("/monkeygif.gif")',
@@ -26,7 +26,7 @@ export default function Herosection() {
     >
       <Header />
 
-      <div className="flex justify-center w-full h-full mt-16 md:mt-0 ">
+      <div className="flex justify-center w-full p-3 h-full mt-16 md:mt-0 ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
