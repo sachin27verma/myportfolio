@@ -129,7 +129,7 @@ const Header = () => {
               <Themetoggle />
             </div>
             <div className="p-2 border-2 border-gray-100 bg-gray-100 rounded-md shadow-md hover:shadow-lg cursor-pointer transition-transform transform hover:scale-105">
-              <Link href="https://drive.google.com/file/d/1lhND2Rxe-59wOKdOn3y-nHj0oYFZjcHa/view?usp=drive_link">
+              <Link href="https://drive.google.com/file/d/1oqQBrocB80nDoprv0AjHteAgi4I25_xj/view">
                 <p className="text-lg font-bold text-[#1d0039]" target="blank">
                   Resume
                 </p>
@@ -196,7 +196,7 @@ const Header = () => {
       </Link>
     </li>
     <li className="list-disc mt-2">
-      <Link href="https://drive.google.com/file/d/1lhND2Rxe-59wOKdOn3y-nHj0oYFZjcHa/view" className="font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300 transition-transform">
+      <Link href="https://drive.google.com/file/d/1oqQBrocB80nDoprv0AjHteAgi4I25_xj/view" className="font-semibold cursor-pointer hover:scale-105 hover:text-yellow-300 transition-transform">
       <p className="  flex justify-center items-center text-white p-2">
         <FaFilePdf  />
         </p>
