@@ -10,6 +10,12 @@ module.exports = {
         port: '',
         pathname: '**',
       },
+      {
+        protocol: 'https',
+        hostname: 'fontmeme.com',
+        port: '',
+        pathname: '**',
+      },
     ],
   },
 };

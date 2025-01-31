@@ -102,7 +102,7 @@ export default function About() {
                   </div>
                   <div className="grid grid-cols-[1fr_2fr] gap-2">
                     <TypingEffect text="CGPA:" isVisible={isVisible} />
-                    <TypingEffect text="8.04 / 10.0" isVisible={isVisible} />
+                    <TypingEffect text="8.01 / 10.0" isVisible={isVisible} />
                   </div>
                 </div>
               </div>
