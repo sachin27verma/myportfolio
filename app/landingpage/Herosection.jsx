@@ -8,6 +8,8 @@ import "../../styles/fonts.css";
 import Header from "./Header";
 import "../../styles/herostyle.css";
 import { scrolltoHash } from './Header';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+
 
 export default function Herosection() {
   return (
@@ -61,7 +63,7 @@ export default function Herosection() {
             </div>
             <div className="w-full mt-3 p-3 max-w-xs md:max-w-md">
               <Image
-                src="https://fontmeme.com/permalink/240703/effa0a2861bff87b21485fade5f43933.png"
+                src="https://fontmeme.com/permalink/250216/b35866eac95f24f868cad2a64a536aa8.png"
                 alt="one-piece-font"
                 width={500}
                 height={50}
@@ -69,6 +71,10 @@ export default function Herosection() {
                 className="contrast-125"
               />
             </div>
+            <div style={{ display: 'flex', alignItems: 'center', fontSize: '24px', color: '#ffffff' }}>
+  <FaMapMarkerAlt style={{ marginRight: '8px', color: '#FF6347' }} />
+  <h1 style={{ margin: 0 }}>Bengaluru</h1>
+</div>
           </div>
           
           <motion.div
