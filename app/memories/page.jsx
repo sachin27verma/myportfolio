@@ -203,7 +203,7 @@ export default function MemoriesPage() {
                   >
                     {memory.files && memory.files.length > 0 ? (
                       // If we have files from Firebase
-                      memory.files.slice(0, 10).map((file, index) => (
+                      memory.files.map((file, index) => (
                         <motion.div
                           key={index}
                           className="relative h-40 md:h-64 rounded-lg overflow-hidden shadow-md hover:shadow-xl"
