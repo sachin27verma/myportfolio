@@ -3,13 +3,15 @@ import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkIcon from "@mui/icons-material/Link";
-import { motion, useScroll } from "framer-motion";
+import { motion, useScroll, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import FastForwardIcon from "@mui/icons-material/FastForward";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
+import PauseIcon from "@mui/icons-material/Pause";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { db } from "../../firebase/Firebase";
 import { collection, query, onSnapshot } from "firebase/firestore";
-import Section from '../../components/Section/Section'
+import Section from '../../components/Section/Section';
 import { Monoton } from 'next/font/google';
 const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 
@@ -17,9 +19,14 @@ const monoton = Monoton({ subsets: ['latin'], weight: '400' });
 export default function Project() {
   const [item, setItem] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const [state, setState] = useState(0);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
   
-
+  // Auto-slide interval (in milliseconds)
+  const autoSlideInterval = 5000;
+  
   const variants = {
     show: {
       opacity: 1,
@@ -65,7 +72,19 @@ export default function Project() {
 
   const n = item.length;
 
-  const [state, setState] = useState(0);
+  // Auto-slide effect
+  useEffect(() => {
+    let interval;
+    if (autoPlay && n > 0) {
+      interval = setInterval(() => {
+        setState((prevState) => (prevState + 1) % n);
+      }, autoSlideInterval);
+    }
+    
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [autoPlay, n]);
 
   const handleClickForward = () => {
     setState((prevState) => (prevState + 1) % n);
@@ -74,10 +93,40 @@ export default function Project() {
   const handleClickBackward = () => {
     setState((prevState) => (prevState - 1 + n) % n);
   };
+  
+  const toggleAutoPlay = () => {
+    setAutoPlay(!autoPlay);
+  };
+  
+  // Go to a specific slide
+  const goToSlide = (index) => {
+    setState(index);
+  };
+  
+  // Touch handlers for swipe functionality
+  const handleTouchStart = (e) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+  
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.touches[0].clientX);
+  };
+  
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 100) {
+      // Swipe left, go to next slide
+      handleClickForward();
+    }
+    
+    if (touchEnd - touchStart > 100) {
+      // Swipe right, go to previous slide
+      handleClickBackward();
+    }
+  };
 
   return (
     <>
-      <div id='project' className=" fancy-border  h-auto transition-transform  ">
+      <div id='project' className="fancy-border h-auto transition-transform relative overflow-hidden">
         <div className={`text-xl md:text-4xl text-center tracking-wide my-4 mb-6 ${monoton.className}`}>
           PROJECTs
         </div>
@@ -91,17 +140,32 @@ export default function Project() {
 
           ) : (
             <Section>
-            <motion.div
-              key={item[state].id}
-              variants={variants} animate="show" initial="hide"
-              className="w-full md:min-w-[300px]">
-              <p className="text-3xl font-bold  text-gray-400 dark:text-[#FFD700] tracking-wider mb-5 text-center drop-shadow-lg outline-offset-2 outline-blue-50">
-                <span className="  ">{item[state].name}</span>
-                
-              </p> 
-              <div className=" flex flex-row ">
-              <div className="w-full md:w-5/6 mx-auto h-auto rounded-lg relative flex flex-col md:flex-row gap-4">
-                <div className=" h-[400px] md:h-auto w-full md:w-1/2  relative group">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={item[state].id}
+                variants={variants}
+                animate="show"
+                initial="hide"
+                exit="hide"
+                className="w-full md:min-w-[300px]"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+              <p className="text-3xl font-bold text-gray-400 dark:text-[#FFD700] tracking-wider mb-5 text-center drop-shadow-lg">
+                <span className="relative inline-block">
+                  {item[state].name}
+                  <motion.span 
+                    className="absolute -bottom-2 left-0 w-full h-1 bg-[#FFD700]"
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 1 }}
+                  />
+                </span>
+              </p>
+              <div className="flex flex-row">
+              <div className="w-full md:w-5/6 mx-auto h-auto rounded-lg relative flex flex-col md:flex-row gap-4 bg-gray-800/20 dark:bg-purple-900/10 p-4 md:p-6 rounded-xl shadow-lg">
+                <div className="h-[300px] sm:h-[400px] md:h-auto w-full md:w-1/2 relative group">
                   <Image
                     key={item[state].id}
                     src={item[state].image1}
@@ -119,9 +183,9 @@ export default function Project() {
                   />
                 </div>
 
-                <div className="w-full  md:w-1/2 flex flex-col justify-between">
+                <div className="w-full md:w-1/2 flex flex-col justify-between mt-4 md:mt-0">
                   <div>
-                    <div className=" italic">
+                    <div className="italic bg-gray-800/30 dark:bg-purple-900/20 p-4 rounded-lg shadow-inner">
                       <svg
                         class="w-8 h-8 text-gray-400 dark:text-[#FFD700] rotate-180 inline-block mb-4"
                         aria-hidden="true"
@@ -132,7 +196,7 @@ export default function Project() {
                       </svg>
                       <p
                         key={item[state].id}
-                        className="tracking-wider text-nowrap  text-md break-all leading-9 text-gray-400 dark:text-[#FFD700] ">
+                        className="tracking-wider text-md break-words leading-7 md:leading-9 text-gray-400 dark:text-[#FFD700]">
                         {item[state].description1}
                       </p>
                       <br />
@@ -143,7 +207,7 @@ export default function Project() {
                       </p> */}
                       <br className="hidden md:flex" />
                     </div>
-                    <div className="tag flex gap-4 flex-wrap">
+                    <div className="tag flex gap-2 md:gap-4 flex-wrap mt-4">
                       {item[state].tags.map((el, index) => (
                         <span
                           key={index}
@@ -153,45 +217,71 @@ export default function Project() {
                       ))}
                     </div>
                   </div>
-                  <div className="py-3 flex gap-3 text-gray-400 dark:text-white">
-                    <span>
-                      <Link href={item[state].link1}>
-                        <GitHubIcon className="text-4xl" />
-                      </Link>
-                    </span>
-                    <span className="rotate-45">
-                      <Link href={item[state].link2}>
-                        <LinkIcon className="text-4xl" />
-                      </Link>
-                    </span>
+                  <div className="py-3 flex gap-4 text-gray-400 dark:text-white">
+                    <Link href={item[state].link1} className="bg-gray-700 dark:bg-purple-900/50 p-2 rounded-lg hover:bg-gray-600 dark:hover:bg-purple-800 transition-colors">
+                      <GitHubIcon className="text-3xl" />
+                    </Link>
+                    <Link href={item[state].link2} className="bg-gray-700 dark:bg-purple-900/50 p-2 rounded-lg hover:bg-gray-600 dark:hover:bg-purple-800 transition-colors">
+                      <LinkIcon className="text-3xl" />
+                    </Link>
                   </div>
                 </div>
               </div>
               </div>
              
-            </motion.div>
-          
+              </motion.div>
+            </AnimatePresence>
             </Section>
              
           )}
 
         </div>
-        <hr className="mt-3 w-full md:w-5/6 mx-auto bg-[#1d0039] dark:bg-[#FFD700]" />
+        <hr className="mt-6 w-full md:w-5/6 mx-auto bg-[#1d0039] dark:bg-[#FFD700]" />
         
-        <div className="flex justify-center mt-2 gap-2 text-gray-400 dark:text-[#FFD700]">
-            <span>
-              <FastRewindIcon
-                className="text-4xl cursor-pointer hover:animate-none hover:text-[#FFD700] animate-pulse hover:scale-110"
-                onClick={handleClickBackward}
-              />
-            </span>{" "}
-            <span>
-              <FastForwardIcon
-                className="text-4xl animate-pulse hover:animate-none cursor-pointer hover:text-[#FFD700] hover:scale-110"
-                onClick={handleClickForward}
-              />
-            </span>
+        {/* Carousel Controls */}
+        <div className="flex flex-col items-center mt-4 gap-4">
+          <div className="flex justify-center gap-4 text-gray-400 dark:text-[#FFD700]">
+            <button 
+              className="bg-gray-800 dark:bg-purple-900/50 p-2 rounded-full hover:bg-gray-700 dark:hover:bg-purple-800 transition-colors"
+              onClick={handleClickBackward}
+              aria-label="Previous project"
+            >
+              <FastRewindIcon className="text-2xl md:text-3xl" />
+            </button>
+            
+            <button 
+              className="bg-gray-800 dark:bg-purple-900/50 p-2 rounded-full hover:bg-gray-700 dark:hover:bg-purple-800 transition-colors"
+              onClick={toggleAutoPlay}
+              aria-label={autoPlay ? "Pause autoplay" : "Start autoplay"}
+            >
+              {autoPlay ? <PauseIcon className="text-2xl md:text-3xl" /> : <PlayArrowIcon className="text-2xl md:text-3xl" />}
+            </button>
+            
+            <button 
+              className="bg-gray-800 dark:bg-purple-900/50 p-2 rounded-full hover:bg-gray-700 dark:hover:bg-purple-800 transition-colors"
+              onClick={handleClickForward}
+              aria-label="Next project"
+            >
+              <FastForwardIcon className="text-2xl md:text-3xl" />
+            </button>
           </div>
+          
+          {/* Slide indicators */}
+          <div className="flex gap-2 mt-2">
+            {item.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all ${
+                  index === state 
+                    ? "bg-[#FFD700] w-6" 
+                    : "bg-gray-400 dark:bg-gray-600 hover:bg-gray-300 dark:hover:bg-gray-500"
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );

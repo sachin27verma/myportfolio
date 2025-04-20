@@ -1,23 +1,24 @@
 // Herosection.jsx
 
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import "../../styles/fonts.css";
-import Header from "./Header";
+import Header, { useGifToggle } from "./Header";
 import "../../styles/herostyle.css";
 import { scrolltoHash } from './Header';
 import { FaMapMarkerAlt } from 'react-icons/fa';
 
-
 export default function Herosection() {
+  const { gif } = useGifToggle();
+  
   return (
     <div
-      className="relative h-screen  grayscale dark:grayscale-0"
+      className="relative h-screen grayscale dark:grayscale-0"
       style={{
         backgroundImage:
-          'linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(216,0,244,1) 50%), url("/monkeygif.gif")',
+          `linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(216,0,244,1) 50%), url("${gif}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -27,7 +28,6 @@ export default function Herosection() {
       }}
     >
       <Header />
-
       <div className="flex justify-center w-full p-3 h-full mt-16 md:mt-0 ">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -72,9 +72,9 @@ export default function Herosection() {
               />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', fontSize: '24px', color: '#ffffff' }}>
-  <FaMapMarkerAlt style={{ marginRight: '8px', color: '#FF6347' }} />
-  <h1 style={{ margin: 0 }}>Bengaluru</h1>
-</div>
+              <FaMapMarkerAlt style={{ marginRight: '8px', color: '#FF6347' }} />
+              <h1 style={{ margin: 0 }}>Bengaluru</h1>
+            </div>
           </div>
           
           <motion.div
